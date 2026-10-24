@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>لوحة تحكم L’Antica</title>
+<link rel="stylesheet" href="css/admin.css"></head><body>
+<section id="login"><h2>لوحة التحكم</h2><input id="em" type="email" placeholder="البريد الإلكتروني" autocomplete="username"><input id="pw" type="password" placeholder="كلمة المرور" autocomplete="current-password"><button id="lg" class="b">دخول</button><p id="lm" class="err"></p></section>
+<section id="app" hidden>
+<header><b>L’Antica — الإدارة</b><span><button class="b s" data-t="orders">الطلبات</button><button class="b s" data-t="prods">المنتجات</button><button class="b s" data-t="cats">التصنيفات</button><button class="b s" data-t="zones">التوصيل</button><button class="b s" data-t="sets">الإعدادات</button><button class="b s" id="lo">خروج</button></span></header>
+<div id="toast" hidden></div>
+<main id="orders"><div class="bar"><select id="fs"><option value="">كل الحالات</option></select><input type="date" id="fd"><button class="b s" id="rf">تحديث</button></div><div id="ol"></div></main>
+<main id="prods" hidden><button class="b" id="np">+ منتج جديد</button><div id="pl"></div></main>
+<main id="cats" hidden></main><main id="zones" hidden></main><main id="sets" hidden></main>
+<div id="modal" hidden><div class="box" id="box"></div></div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/supabase-config.js"></script><script src="js/admin.js"></script></body></html>
