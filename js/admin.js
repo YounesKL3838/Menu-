@@ -1,4 +1,14 @@
 const $=id=>document.getElementById(id),E=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const LG=localStorage.getItem("adm_lang")==="fr"?"fr":"ar";
+const D={"+ إضافة وجبة":"+ Ajouter un plat","لا توجد وجبات":"Aucun plat","طلبات اليوم":"Commandes du jour","إيرادات اليوم":"Recettes du jour","تسجيل الدخول": "Connexion", "البريد الإلكتروني": "E-mail", "كلمة المرور": "Mot de passe", "دخول": "Se connecter", "بيانات الدخول غير صحيحة": "Identifiants incorrects", "هذا الحساب غير مصرّح له بالدخول": "Ce compte n’est pas autorisé", "الطلبات": "Commandes", "المنتجات": "Produits", "التصنيفات": "Catégories", "التوصيل": "Livraison", "الإعدادات": "Paramètres", "خروج": "Déconnexion", "كل الحالات": "Tous les statuts", "تحديث": "Actualiser", "جديد": "Nouveau", "قيد التحضير": "En préparation", "جاهز": "Prêt", "خرج للتوصيل": "En livraison", "مكتمل": "Terminée", "ملغى": "Annulée", "استلام": "À emporter", "داخل المطعم": "Sur place", "لا توجد طلبات.": "Aucune commande.", "طلب جديد": "Nouvelle commande", "+ منتج جديد": "+ Nouveau produit", "تعديل": "Modifier", "إخفاء": "Masquer", "إظهار": "Afficher", "غير متوفر": "Indisponible", "متوفر": "Disponible", "نفد اليوم": "Épuisé aujourd’hui", "إلغاء نفد اليوم": "Annuler « épuisé »", "حذف": "Supprimer", "تعديل منتج": "Modifier le produit", "منتج جديد": "Nouveau produit", "التصنيف": "Catégorie", "الاسم بالعربية *": "Nom en arabe *", "الاسم بالفرنسية": "Nom en français", "الوصف بالعربية": "Description en arabe", "الوصف بالفرنسية": "Description en français", "إيموجي": "Emoji", "السعر دج (إن لم تكن هناك أحجام)": "Prix DA (si pas de tailles)", "صورة (من الجهاز)": "Image (depuis l’appareil)", "علامة «جديد»": "Badge « Nouveau »", "حفظ": "Enregistrer", "إلغاء": "Annuler", "الأحجام (اتركها فارغة إن لم يكن للمنتج أحجام)": "Tailles (laisser vide s’il n’y en a pas)", "الإضافات": "Suppléments", "مكونات يمكن حذفها": "Ingrédients retirables", "خيار إلزامي: النوع (اختياري)": "Choix obligatoire : Type (facultatif)", "خيار إلزامي: الصلصة (اختياري)": "Choix obligatoire : Sauce (facultatif)", "+ حجم": "+ Taille", "+ إضافة": "+ Ajouter", "+ مكوّن": "+ Ingrédient", "+ خيار": "+ Option", "بالعربية": "En arabe", "الحجم بالعربية": "Taille en arabe", "السعر دج": "Prix DA", "دج": "DA", "عنوان الخيار بالعربية": "Titre en arabe", "سعر لكل حجم": "Prix par taille", "عربي": "Arabe", "الترتيب": "Ordre", "ظاهر": "Visible", "فعّال": "Actif", "الرسوم دج (فارغ = يؤكدها المطعم)": "Frais DA (vide = confirmés par le restaurant)", "تم ✓": "OK ✓", "التواصل": "Contact", "الهاتف": "Téléphone", "رابط الخريطة": "Lien de la carte", "رفض الطلبات خارج أوقات العمل": "Refuser les commandes hors horaires", "تفعيل الأكل داخل المطعم": "Activer la consommation sur place", "أرقام الطاولات (مثل 1-17 أو 1-10, 15)": "Numéros de tables (ex. 1-17 ou 1-10, 15)", "الأوقات الأسبوعية": "Horaires hebdomadaires", "مغلق": "Fermé", "الأحد": "Dimanche", "الإثنين": "Lundi", "الثلاثاء": "Mardi", "الأربعاء": "Mercredi", "الخميس": "Jeudi", "الجمعة": "Vendredi", "السبت": "Samedi", "النصوص": "Textes", "العبارة (عربي)": "Slogan (arabe)", "الترحيب (عربي)": "Accueil (arabe)", "أوقات العمل (نص)": "Horaires (texte)", "العنوان (عربي)": "Adresse (arabe)", "نبذة (عربي)": "À propos (arabe)", "الصور": "Images", "الشعار": "Logo", "الغلاف": "Couverture", "خلفية البداية": "Image d’accueil", "حفظ الإعدادات": "Enregistrer les paramètres", "تم الحفظ ✓": "Enregistré ✓", "أدخل أوقات فتح وإغلاق صحيحة لكل يوم غير مغلق": "Saisissez des horaires valides pour chaque jour ouvert", "أدخل أرقام الطاولات": "Saisissez les numéros de tables", "أدخل اسم المنتج": "Saisissez le nom du produit", "كل حجم يحتاج اسمًا بالعربية وسعرًا": "Chaque taille nécessite un nom arabe et un prix", "الصورة أكبر من 5MB": "Image supérieure à 5 Mo", "ملف الصورة غير صالح": "Fichier image invalide", "تعذّر ضغط الصورة": "Compression de l’image impossible", "حذف هذا العنصر؟": "Supprimer cet élément ?", "الاسم العربي مطلوب": "Le nom arabe est obligatoire", "لا يمكن الحذف: توجد منتجات في هذا التصنيف. انقلها أو احذفها أولًا.": "Suppression impossible : des produits existent dans cette catégorie. Déplacez-les ou supprimez-les d’abord.", "الإدارة": "Administration"},SUB=[["المجموع الفرعي:", "Sous-total :"], ["• التوصيل:", "• Livraison :"], ["يُحدد لاحقًا", "À déterminer"], ["+ توصيل", "+ livraison"], ["🔔 طلب جديد:", "🔔 Nouvelle commande :"], ["🍽️ طاولة", "🍽️ Table"], ["إضافات:", "Suppléments :"], ["بدون:", "Sans :"], ["ملاحظة:", "Note :"], ["غير مضبوط", "non configuré"], ["تعذّر حفظ الحالة:", "Impossible d’enregistrer le statut :"], ["سعر غير صحيح:", "Prix invalide :"], ["الإضافات:", "Suppléments :"], ["الخيار الإلزامي:", "Choix obligatoire :"], ["المكونات:", "Ingrédients :"], [": الاسم بالعربية مطلوب", ": le nom arabe est obligatoire"], [": أدخل سعرًا لكل حجم", ": saisissez un prix par taille"], ["أدخل العنوان وخيارًا واحدًا على الأقل", "saisissez le titre et au moins une option"], ["لوحة تحكم", "Administration"]].sort((a,b)=>b[0].length-a[0].length);
+function T(s){if(LG!=="fr"||!s)return s;const t=s.trim();if(!t)return s;if(D[t])return s.replace(t,D[t]);let r=s;for(const[a,b]of SUB)if(r.includes(a))r=r.split(a).join(b);return r.replace(/(\d)\s*دج/g,"$1 DA").replace(/^الحجم (\d+)$/,"Taille $1").replace(/^حذف «(.+)» نهائيًا؟$/,"Supprimer « $1 » définitivement ?")}
+function TA(n){if(n.nodeType===3){const v=T(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v;return}if(n.nodeType!==1)return;
+ for(const a of["placeholder","title"])if(n.hasAttribute&&n.hasAttribute(a)){const v=T(n.getAttribute(a));if(v!==n.getAttribute(a))n.setAttribute(a,v)}
+ n.querySelectorAll&&n.querySelectorAll("[placeholder],[title]").forEach(e=>TA(e));const w=document.createTreeWalker(n,4);let x;while(x=w.nextNode())TA(x)}
+if(LG==="fr"){document.documentElement.lang="fr";document.documentElement.dir="ltr";document.title=T(document.title);
+ const _al=window.alert.bind(window),_co=window.confirm.bind(window);window.alert=m=>_al(T(String(m)));window.confirm=m=>_co(T(String(m)));
+ new MutationObserver(ms=>ms.forEach(m=>{if(m.type==="characterData")TA(m.target);else m.addedNodes.forEach(TA)})).observe(document.body,{childList:true,subtree:true,characterData:true});TA(document.body)}
+document.querySelectorAll(".lang").forEach(b=>{b.textContent=LG==="fr"?"العربية":"Français";b.onclick=()=>{localStorage.setItem("adm_lang",LG==="fr"?"ar":"fr");location.reload()}});
 const ST={new:"جديد",preparing:"قيد التحضير",ready:"جاهز",out_for_delivery:"خرج للتوصيل",completed:"مكتمل",cancelled:"ملغى"},TY={delivery:"توصيل",pickup:"استلام",dine_in:"داخل المطعم"};
 const fmt=n=>new Intl.NumberFormat("fr-DZ").format(n)+" دج",ok=r=>{if(r.error)throw r.error;return r.data};
 let orders=[],seen=null,open=new Set(),cats=[],prods=[],ch=null;
@@ -6,26 +16,27 @@ $("fs").innerHTML+=Object.entries(ST).map(([k,v])=>`<option value="${k}">${v}</o
 async function isAdmin(){const r=await sb.from("admins").select("user_id").maybeSingle();return !r.error&&!!r.data}
 async function start(){if(!window.sb){$("lm").textContent="js/supabase-config.js غير مضبوط";return}
  const {data}=await sb.auth.getSession();if(data.session&&await isAdmin())enter();}
-$("lg").onclick=async()=>{$("lm").textContent="";const r=await sb.auth.signInWithPassword({email:$("em").value.trim(),password:$("pw").value});
+$("tp").onclick=()=>{$("pw").type=$("pw").type==="password"?"text":"password"};
+$("lf").onsubmit=async ev=>{ev.preventDefault();$("lm").textContent="";const r=await sb.auth.signInWithPassword({email:$("em").value.trim(),password:$("pw").value});
  if(r.error){$("lm").textContent="بيانات الدخول غير صحيحة";return}
  if(!await isAdmin()){await sb.auth.signOut();$("lm").textContent="هذا الحساب غير مصرّح له بالدخول";return}enter()};
 $("lo").onclick=async()=>{await sb.auth.signOut();location.reload()};
 function enter(){$("login").hidden=true;$("app").hidden=false;loadOrders();
  ch=sb.channel("orders").on("postgres_changes",{event:"*",schema:"public",table:"orders"},()=>loadOrders()).subscribe();setInterval(loadOrders,30000)}
 const TABS=["orders","prods","cats","zones","sets"];
-document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{TABS.forEach(t=>$(t).hidden=t!==b.dataset.t);const f={prods:loadProds,cats:()=>loadRows("cats"),zones:()=>loadRows("zones"),sets:loadSets}[b.dataset.t];if(f)f()});
+document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{TABS.forEach(t=>$(t).hidden=t!==b.dataset.t);document.querySelectorAll("[data-t]").forEach(x=>x.classList.toggle("on",x===b));const f={prods:loadProds,cats:()=>loadRows("cats"),zones:()=>loadRows("zones"),sets:loadSets}[b.dataset.t];if(f)f()});
 function beep(){try{const c=new AudioContext(),o=c.createOscillator();o.connect(c.destination);o.frequency.value=880;o.start();setTimeout(()=>{o.stop();c.close()},350)}catch(e){}}
 async function loadOrders(){try{orders=ok(await sb.from("orders").select("*").order("created_at",{ascending:false}).limit(300))}catch(x){console.error(x);return}
  const fresh=orders.filter(o=>o.status==="new"&&seen&&!seen.has(o.id));
  if(fresh.length){$("toast").textContent="🔔 طلب جديد: "+fresh.map(o=>o.order_number).join("، ");$("toast").hidden=false;beep();setTimeout(()=>$("toast").hidden=true,8000)}
  seen=new Set(orders.map(o=>o.id));renderOrders()}
 const lineTxt=l=>`${l.qty}× ${E(l.name)}${l.size?" ("+E(l.size)+")":""} — ${fmt(l.line_total)}<small>${[...(l.choices||[]).map(c=>E(c.group)+": "+E(c.name)),(l.extras||[]).length?"إضافات: "+l.extras.map(e=>E(e.name)).join("، "):"",(l.removed||[]).length?"بدون: "+l.removed.map(e=>E(e.name)).join("، "):"",l.note?"ملاحظة: "+E(l.note):""].filter(Boolean).join(" • ")}</small>`;
-function renderOrders(){const s=$("fs").value,d=$("fd").value;
+function renderOrders(){stats();const s=$("fs").value,d=$("fd").value;
  const L=orders.filter(o=>(!s||o.status===s)&&(!d||new Date(o.created_at).toLocaleDateString("sv")===d));
- $("ol").innerHTML=L.map(o=>`<div class="o ${o.status==="new"?"new":""}"><div class="row" data-id="${o.id}" style="cursor:pointer"><b dir="ltr">${E(o.order_number)}</b><span class="tag">${ST[o.status]}</span><span>${TY[o.order_type]}</span><b>${fmt(o.total)}${o.delivery_fee_pending?" + توصيل":""}</b><small>${new Date(o.created_at).toLocaleString("fr-DZ")}</small></div>
+ $("ol").innerHTML=L.map((o,ix)=>`<div class="o st-${o.status} ${o.status==="new"?"new":""} ${shown.has(o.id)?"":"in"}" style="--i:${Math.min(ix,12)}"><div class="row" data-id="${o.id}" style="cursor:pointer"><b dir="ltr">${E(o.order_number)}</b><span class="tag t-${o.status}">${ST[o.status]}</span><span>${TY[o.order_type]}</span><b>${fmt(o.total)}${o.delivery_fee_pending?" + توصيل":""}</b><small>${new Date(o.created_at).toLocaleString("fr-DZ")}</small></div>
  ${open.has(o.id)?`<div class="det"><div>${E(o.customer_name||"—")} ${o.phone?`<a href="tel:${E(o.phone)}" style="color:#ff8087">${E(o.phone)}</a>`:""}</div>${o.zone_name?`<div>📍 ${E(o.zone_name)} ${E(o.address||"")}</div>`:""}${o.table_number?`<div>🍽️ طاولة ${E(o.table_number)}</div>`:""}${o.notes?`<div>📝 ${E(o.notes)}</div>`:""}
  ${o.items.map(l=>`<div style="margin:6px 0">${lineTxt(l)}</div>`).join("")}<div>المجموع الفرعي: ${fmt(o.subtotal)} • التوصيل: ${o.delivery_fee==null?(o.delivery_fee_pending?"يُحدد لاحقًا":"—"):fmt(o.delivery_fee)}</div>
- <select data-st="${o.id}">${Object.entries(ST).map(([k,v])=>`<option value="${k}" ${k===o.status?"selected":""}>${v}</option>`).join("")}</select></div>`:""}</div>`).join("")||"<p>لا توجد طلبات.</p>"}
+ <select data-st="${o.id}">${Object.entries(ST).map(([k,v])=>`<option value="${k}" ${k===o.status?"selected":""}>${v}</option>`).join("")}</select></div>`:""}</div>`).join("")||"<p>لا توجد طلبات.</p>";L.forEach(o=>shown.add(o.id))}
 $("ol").onclick=e=>{const r=e.target.closest("[data-id]");if(r){open.has(r.dataset.id)?open.delete(r.dataset.id):open.add(r.dataset.id);renderOrders()}};
 $("ol").onchange=async e=>{const id=e.target.dataset.st;if(!id)return;const r=await sb.from("orders").update({status:e.target.value}).eq("id",id);if(r.error)alert("تعذّر حفظ الحالة: "+r.error.message);loadOrders()};
 $("fs").onchange=$("fd").onchange=renderOrders;$("rf").onclick=loadOrders;
@@ -33,38 +44,52 @@ $("fs").onchange=$("fd").onchange=renderOrders;$("rf").onclick=loadOrders;
 async function loadProds(){try{cats=ok(await sb.from("categories").select("*").order("sort_order"));
  prods=ok(await sb.from("products").select("*,product_sizes(*),product_extras(*),product_removables(*),option_groups(*,group_options(*))").order("sort_order"))}catch(x){alert(x.message);return}
  const td=new Date().toLocaleDateString("sv");
- $("pl").innerHTML=cats.map(c=>`<h3>${E(c.emoji)} ${E(c.name_ar)}</h3>`+prods.filter(p=>p.category_id===c.id).map(p=>`<div class="p row ${p.is_hidden||!p.is_available?"off":""}"><span class="row">${p.image_url?`<img src="${E(p.image_url)}" alt="">`:""}<b>${E(p.name_ar)}</b></span>
- <span class="row"><button class="b s" data-a="e" data-i="${p.id}">تعديل</button><button class="b s" data-a="h" data-i="${p.id}">${p.is_hidden?"إظهار":"إخفاء"}</button><button class="b s" data-a="v" data-i="${p.id}">${p.is_available?"غير متوفر":"متوفر"}</button><button class="b s" data-a="s" data-i="${p.id}">${p.sold_out_date===td?"إلغاء نفد اليوم":"نفد اليوم"}</button><button class="b s d" data-a="x" data-i="${p.id}">حذف</button></span></div>`).join("")).join("")}
-$("pl").onclick=async e=>{const b=e.target.closest("[data-a]");if(!b)return;const p=prods.find(x=>x.id===b.dataset.i),a=b.dataset.a,td=new Date().toLocaleDateString("sv");let u=null;
+ const rowHtml=p=>`<div class="pr ${p.is_hidden||!p.is_available?"off":""}"><span class="row">${p.image_url?`<img src="${E(p.image_url)}" alt="">`:""}<b>${E(p.name_ar)}</b></span>
+ <span class="row"><button class="b s" data-a="e" data-i="${p.id}">تعديل</button><button class="b s" data-a="h" data-i="${p.id}">${p.is_hidden?"إظهار":"إخفاء"}</button><button class="b s" data-a="v" data-i="${p.id}">${p.is_available?"غير متوفر":"متوفر"}</button><button class="b s" data-a="s" data-i="${p.id}">${p.sold_out_date===td?"إلغاء نفد اليوم":"نفد اليوم"}</button><button class="b s d" data-a="x" data-i="${p.id}">حذف</button></span></div>`;
+ $("pl").innerHTML=cats.map(c=>{const L=prods.filter(p=>p.category_id===c.id);return `<details class="catbox" data-c="${c.id}" ${OPEN.has(c.id)?"open":""}><summary><span>${E(c.emoji)} ${E(c.name_ar)}</span><em>${L.length}</em></summary>${L.map(rowHtml).join("")||'<p class="mut">لا توجد وجبات</p>'}<button class="b s" data-a="n" data-c="${c.id}">+ إضافة وجبة</button></details>`}).join("")}
+$("pl").onclick=async e=>{const b=e.target.closest("[data-a]");if(!b)return;if(b.dataset.a==="n")return form({category_id:b.dataset.c});const p=prods.find(x=>x.id===b.dataset.i),a=b.dataset.a,td=new Date().toLocaleDateString("sv");let u=null;
  if(a==="e")return form(p);if(a==="h")u={is_hidden:!p.is_hidden};if(a==="v")u={is_available:!p.is_available};if(a==="s")u={sold_out_date:p.sold_out_date===td?null:td};
  if(a==="x"){if(!confirm("حذف «"+p.name_ar+"» نهائيًا؟"))return;const r=await sb.from("products").delete().eq("id",p.id);if(r.error)alert(r.error.message);return loadProds()}
  const r=await sb.from("products").update(u).eq("id",p.id);if(r.error)alert(r.error.message);loadProds()};
 $("np").onclick=()=>form(null);
 const srt=a=>[...(a||[])].sort((x,y)=>x.sort_order-y.sort_order);
+let FS=null;
+const I=(c,v,ph,num)=>`<input class="${c}" placeholder="${ph}" value="${E(v)}"${num?' type="number" min="0"':""}>`;
+function prow(cls,r,i){const S=FS.sizes;return `<div class="rw ${cls}">${I("n",r.n,"بالعربية")}${I("f",r.f,"Français")}${I("p",r.p,"السعر دج",1)}${S.length>1?`<label><input type="checkbox" class="per" style="width:auto" ${r.per?"checked":""}> سعر لكل حجم</label>`:""}<button class="b s d" data-del="${cls}:${i}">✕</button>${r.per&&S.length>1?`<div class="pvs">${S.map((s,k)=>`<label>${E(s.n||"الحجم "+(k+1))}${I("pv",r.v[k]??"","دج",1)}</label>`).join("")}</div>`:""}</div>`}
+function renderDyn(){const S=FS.sizes;$("dyn").innerHTML=`<h4>الأحجام (اتركها فارغة إن لم يكن للمنتج أحجام)</h4>${S.map((s,i)=>`<div class="rw sz">${I("n",s.n,"الحجم بالعربية")}${I("f",s.f,"Taille en français")}${I("p",s.p,"السعر دج",1)}<button class="b s d" data-del="sz:${i}">✕</button></div>`).join("")}<button class="b s" data-add="sz">+ حجم</button>
+<h4>الإضافات</h4>${FS.extras.map((r,i)=>prow("ex",r,i)).join("")}<button class="b s" data-add="ex">+ إضافة</button>
+<h4>مكونات يمكن حذفها</h4>${FS.rm.map((r,i)=>`<div class="rw rm">${I("n",r.n,"بالعربية")}${I("f",r.f,"Français")}<button class="b s d" data-del="rm:${i}">✕</button></div>`).join("")}<button class="b s" data-add="rm">+ مكوّن</button>
+${[["2","خيار إلزامي: النوع"],["1","خيار إلزامي: الصلصة"]].map(([k,l])=>{const g=FS["g"+k];return `<h4>${l} (اختياري)</h4><div class="rw">${I("gt"+k,g.t,"عنوان الخيار بالعربية")}${I("gf"+k,g.f,"Titre en français")}</div>${g.o.map((r,i)=>prow("go"+k,r,i)).join("")}<button class="b s" data-add="go${k}">+ خيار</button>`}).join("")}`}
+function collect(){const D=$("dyn"),q=s=>[...D.querySelectorAll(s)],g=(r,c)=>{const e=r.querySelector("."+c);return e?e.value.trim():""},
+ pr=r=>({n:g(r,"n"),f:g(r,"f"),p:g(r,"p"),per:!!(r.querySelector(".per")&&r.querySelector(".per").checked),v:[...r.querySelectorAll(".pv")].map(i=>i.value.trim())});
+ FS.sizes=q(".sz").map(r=>({n:g(r,"n"),f:g(r,"f"),p:g(r,"p")}));FS.extras=q(".ex").map(pr);FS.rm=q(".rm").map(r=>({n:g(r,"n"),f:g(r,"f")}));
+ for(const k of["1","2"]){const t=D.querySelector(".gt"+k),f=D.querySelector(".gf"+k);FS["g"+k]={t:t?t.value.trim():"",f:f?f.value.trim():"",o:q(".go"+k).map(pr)}}}
+$("box").addEventListener("click",e=>{const a=e.target.closest("[data-add]"),d=e.target.closest("[data-del]");if(!FS||(!a&&!d))return;collect();
+ const L=k=>k==="sz"?FS.sizes:k==="ex"?FS.extras:k==="rm"?FS.rm:FS["g"+k.slice(2)].o;
+ if(a){const k=a.dataset.add;L(k).push(k==="sz"?{n:"",f:"",p:""}:k==="rm"?{n:"",f:""}:{n:"",f:"",p:"",per:false,v:[]})}else{const[k,i]=d.dataset.del.split(":");L(k).splice(+i,1)}renderDyn()});
+$("box").addEventListener("change",e=>{if(FS&&e.target.classList&&e.target.classList.contains("per")){collect();renderDyn()}});
 function form(p){p=p||{};const sz=srt(p.product_sizes),ids=sz.map(s=>s.id);
+ const pv=o=>{const sp=o.size_prices&&Object.keys(o.size_prices).length;return{n:o.name_ar,f:o.name_fr||"",p:sp?"":o.price,per:!!sp,v:sp?ids.map(i=>o.size_prices[i]??0):[]}};
+ const gp=slot=>{const g=(p.option_groups||[]).find(x=>x.slot===slot);return g?{t:g.title_ar,f:g.title_fr||"",o:srt(g.group_options).map(pv)}:{t:"",f:"",o:[]}};
+ FS={sizes:sz.map(s=>({n:s.name_ar,f:s.name_fr||"",p:s.price})),extras:srt(p.product_extras).map(pv),rm:srt(p.product_removables).map(r=>({n:r.name_ar,f:r.name_fr||""})),g2:gp("ch2"),g1:gp("ch")};
  $("box").innerHTML=`<h3>${p.id?"تعديل منتج":"منتج جديد"}</h3><label>التصنيف</label><select id="fC">${cats.map(c=>`<option value="${c.id}" ${c.id===p.category_id?"selected":""}>${E(c.name_ar)}</option>`).join("")}</select>
- <label>الاسم بالعربية *</label><input id="fN" value="${E(p.name_ar)}"><label>الاسم بالفرنسية</label><input id="fF" value="${E(p.name_fr)}"><label>الوصف (عربي)</label><input id="fD" value="${E(p.desc_ar)}"><label>الوصف (فرنسي)</label><input id="fDF" value="${E(p.desc_fr)}">
- <label>إيموجي</label><input id="fE" value="${E(p.emoji||"🍽️")}"><label>السعر (يُتجاهل إن وُجدت أحجام)</label><input id="fP" type="number" min="0" value="${p.base_price??""}">
- <label>الأحجام — سطر لكل حجم: عربي|Français|السعر</label><textarea id="fS">${sz.map(s=>[s.name_ar,s.name_fr||"",s.price].join("|")).join("\n")}</textarea>
- <label>الإضافات — عربي|Français|السعر (أو أسعار الأحجام مفصولة بـ / بترتيبها)</label><textarea id="fX">${srt(p.product_extras).map(x=>[x.name_ar,x.name_fr||"",x.size_prices&&Object.keys(x.size_prices).length?ids.map(i=>x.size_prices[i]||0).join("/"):x.price].join("|")).join("\n")}</textarea>
- <label>مكونات يمكن حذفها — عربي|Français</label><textarea id="fR">${srt(p.product_removables).map(x=>x.name_ar+"|"+(x.name_fr||"")).join("\n")}</textarea>
- <label>خيار إلزامي «النوع» (اختياري) — السطر الأول: العنوان عربي|Français ثم خيار في كل سطر: عربي|Français|السعر</label><textarea id="fG2">${gTxt(p,"ch2",ids)}</textarea>
- <label>خيار إلزامي «الصلصة» (اختياري) — نفس الصيغة</label><textarea id="fG1">${gTxt(p,"ch",ids)}</textarea><label>صورة (من الجهاز)</label><input id="fI" type="file" accept="image/jpeg,image/png,image/webp"><label><input id="fNew" type="checkbox" style="width:auto" ${p.is_new?"checked":""}> علامة «جديد»</label>
+ <label>الاسم بالعربية *</label><input id="fN" value="${E(p.name_ar)}"><label>الاسم بالفرنسية</label><input id="fF" value="${E(p.name_fr)}"><label>الوصف بالعربية</label><input id="fD" value="${E(p.desc_ar)}"><label>الوصف بالفرنسية</label><input id="fDF" value="${E(p.desc_fr)}">
+ <label>إيموجي</label><input id="fE" value="${E(p.emoji||"🍽️")}"><label>السعر دج (إن لم تكن هناك أحجام)</label><input id="fP" type="number" min="0" value="${p.base_price??""}">
+ <div id="dyn"></div><label>صورة (من الجهاز)</label><input id="fI" type="file" accept="image/jpeg,image/png,image/webp"><label><input id="fNew" type="checkbox" style="width:auto" ${p.is_new?"checked":""}> علامة «جديد»</label>
  <p class="err" id="fm"></p><div class="row"><button class="b" id="fs2">حفظ</button><button class="b s" id="fc">إلغاء</button></div>`;
- $("modal").hidden=false;$("fc").onclick=()=>$("modal").hidden=true;$("fs2").onclick=()=>save(p)}
+ $("modal").hidden=false;renderDyn();$("fc").onclick=()=>{FS=null;$("modal").hidden=true};$("fs2").onclick=()=>save(p)}
 const lines=id=>$(id).value.split("\n").map(l=>l.trim()).filter(Boolean).map(l=>l.split("|").map(x=>x.trim()));
 const num=v=>{const n=Number(v);if(!Number.isInteger(n)||n<0)throw new Error("سعر غير صحيح: "+v);return n};
 async function save(p){const b=$("fs2");b.disabled=true;$("fm").textContent="";
  try{const name=$("fN").value.trim();if(!name)throw new Error("أدخل اسم المنتج");
-  const S=lines("fS").map(a=>({n:a[0],f:a[1]||null,p:num(a[2])}));if(S.some(s=>!s.n))throw new Error("اسم حجم فارغ");
-  const X=lines("fX").map(a=>({n:a[0],f:a[1]||null,v:(a[2]||"0").split("/").map(num)}));
-  if(X.some(x=>!x.n||(x.v.length>1&&x.v.length!==S.length)))throw new Error("الإضافات: الاسم مطلوب وعدد الأسعار المفصولة بـ / يجب أن يساوي عدد الأحجام");
-  if(X.some(x=>x.v.length>1&&!S.length))throw new Error("لا أحجام لتسعير الإضافات");
-  const G=[["ch2","fG2",0],["ch","fG1",1]].map(([slot,tid,ord])=>{const L=lines(tid);if(!L.length)return{slot,del:true};const O=L.slice(1).map(a=>({n:a[0],f:a[1]||null,v:(a[2]||"0").split("/").map(num)}));
-   if(!L[0][0]||!O.length||O.some(o=>!o.n||(o.v.length>1&&o.v.length!==S.length)))throw new Error("الخيار الإلزامي: عنوان وخيار واحد على الأقل، وعدد أسعار الأحجام يطابق الأحجام");return{slot,ord,t:L[0],O}});
+  collect();const S=FS.sizes.filter(s=>s.n||s.f||s.p!=="").map(s=>{if(!s.n||s.p==="")throw new Error("كل حجم يحتاج اسمًا بالعربية وسعرًا");return{n:s.n,f:s.f||null,p:num(s.p)}});
+  const PX=(r,w)=>{if(!r.n)throw new Error(w+": الاسم بالعربية مطلوب");if(r.per&&S.length>1){if(r.v.length!==S.length||r.v.some(x=>x===""))throw new Error(w+": أدخل سعرًا لكل حجم");return{n:r.n,f:r.f||null,v:r.v.map(num)}}return{n:r.n,f:r.f||null,v:[num(r.p||"0")]}};
+  const X=FS.extras.filter(r=>r.n||r.f||r.p!=="").map(r=>PX(r,"الإضافات"));
+  const R=FS.rm.filter(r=>r.n||r.f);if(R.some(r=>!r.n))throw new Error("المكونات: الاسم بالعربية مطلوب");
+  const G=[["ch2","g2",0],["ch","g1",1]].map(([slot,key,ord])=>{const g=FS[key],O=g.o.filter(r=>r.n||r.f||r.p!=="");if(!g.t&&!O.length)return{slot,del:true};if(!g.t||!O.length)throw new Error("الخيار الإلزامي: أدخل العنوان وخيارًا واحدًا على الأقل");return{slot,ord,t:[g.t,g.f],O:O.map(r=>PX(r,"الخيار الإلزامي"))}});
   let img=p.image_url||null;const f=$("fI").files[0];
-  if(f){if(f.size>5e6)throw new Error("الصورة أكبر من 5MB");const path="products/"+Date.now()+"-"+Math.random().toString(36).slice(2,8)+"."+(f.type.split("/")[1]||"jpg").replace("jpeg","jpg");
-   ok(await sb.storage.from("product-images").upload(path,f,{contentType:f.type}));img=sb.storage.from("product-images").getPublicUrl(path).data.publicUrl}
+  if(f){if(f.size>5e6)throw new Error("الصورة أكبر من 5MB");const path="products/"+Date.now()+"-"+Math.random().toString(36).slice(2,8)+"";const bl=await shrink(f,900),pp=path+(bl.type==="image/png"?".png":".jpg");
+   ok(await sb.storage.from("product-images").upload(pp,bl,{contentType:bl.type,cacheControl:"31536000"}));img=sb.storage.from("product-images").getPublicUrl(pp).data.publicUrl}
   const row={category_id:$("fC").value,name_ar:name,name_fr:$("fF").value.trim()||null,desc_ar:$("fD").value.trim()||null,desc_fr:$("fDF").value.trim()||null,emoji:$("fE").value.trim()||"🍽️",is_new:$("fNew").checked,image_url:img,base_price:S.length?null:num($("fP").value||"x")};
   let id=p.id;if(id)ok(await sb.from("products").update(row).eq("id",id));else id=ok(await sb.from("products").insert(row).select("id").single()).id;
   const old=srt(p.product_sizes),sid=[];
@@ -73,8 +98,8 @@ async function save(p){const b=$("fs2");b.disabled=true;$("fm").textContent="";
   if(old.length>S.length)ok(await sb.from("product_sizes").delete().in("id",old.slice(S.length).map(s=>s.id)));
   ok(await sb.from("product_extras").delete().eq("product_id",id));
   if(X.length)ok(await sb.from("product_extras").insert(X.map((x,i)=>({product_id:id,name_ar:x.n,name_fr:x.f,price:x.v.length>1?0:x.v[0],size_prices:x.v.length>1?Object.fromEntries(x.v.map((v,j)=>[sid[j],v])):null,sort_order:i}))));
-  ok(await sb.from("product_removables").delete().eq("product_id",id));const R=lines("fR").filter(a=>a[0]);
-  if(R.length)ok(await sb.from("product_removables").insert(R.map((a,i)=>({product_id:id,name_ar:a[0],name_fr:a[1]||null,sort_order:i}))));
+  ok(await sb.from("product_removables").delete().eq("product_id",id));
+  if(R.length)ok(await sb.from("product_removables").insert(R.map((a,i)=>({product_id:id,name_ar:a.n,name_fr:a.f||null,sort_order:i}))));
   for(const g of G){const old=(p.option_groups||[]).find(x=>x.slot===g.slot);
    if(g.del){if(old)ok(await sb.from("option_groups").delete().eq("id",old.id));continue}
    const gr={product_id:id,slot:g.slot,title_ar:g.t[0],title_fr:g.t[1]||null,sort_order:g.ord};let gid=old?old.id:null;
@@ -117,7 +142,17 @@ async function saveSets(){const b=$("ss");b.disabled=true;$("sm").textContent=""
   const content={...(SET.content||{})};TX.forEach(([k])=>content[k]=$("t_"+k).value.trim());
   const row={phone:$("sP").value.trim()||null,map_url:$("sM").value.trim()||null,social:{fb:$("sFb").value.trim(),ig:$("sIg").value.trim(),tt:$("sTt").value.trim()},enforce_hours:$("sEn").checked,dine_enabled:$("sDn").checked,tables_list:tb,schedule:sch,content};
   for(const [k,col] of [["logo","logo_url"],["cover","cover_url"],["hero","hero_url"]]){const f=$("i_"+k).files[0];if(!f)continue;if(f.size>5e6)throw new Error("الصورة أكبر من 5MB");
-   const p="site/"+k+"-"+Date.now()+"."+(f.type.split("/")[1]||"jpg").replace("jpeg","jpg");ok(await sb.storage.from("product-images").upload(p,f,{contentType:f.type}));row[col]=sb.storage.from("product-images").getPublicUrl(p).data.publicUrl}
+   const bl=await shrink(f,k==="logo"?500:1400),p="site/"+k+"-"+Date.now()+(bl.type==="image/png"?".png":".jpg");ok(await sb.storage.from("product-images").upload(p,bl,{contentType:bl.type,cacheControl:"31536000"}));row[col]=sb.storage.from("product-images").getPublicUrl(p).data.publicUrl}
   ok(await sb.from("restaurant_settings").update(row).eq("id",1));$("sm").style.color="#4cc38a";$("sm").textContent="تم الحفظ ✓";SET=null;setTimeout(loadSets,900)}
  catch(x){$("sm").style.color="";$("sm").textContent=x.message||String(x)}finally{b.disabled=false}}
 start();
+
+async function shrink(f,max){const u=URL.createObjectURL(f);try{const im=await new Promise((r,x)=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>x(new Error("ملف الصورة غير صالح"));i.src=u});
+ const s=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext("2d").drawImage(im,0,0,c.width,c.height);
+ const t=f.type==="image/png"?"image/png":"image/jpeg";return await new Promise((r,x)=>c.toBlob(b=>b?r(b):x(new Error("تعذّر ضغط الصورة")),t,.78))}finally{URL.revokeObjectURL(u)}}
+const shown=new Set();
+function stats(){const td=new Date().toLocaleDateString("sv"),T=orders.filter(o=>new Date(o.created_at).toLocaleDateString("sv")===td),n=orders.filter(o=>o.status==="new").length,pc=orders.filter(o=>o.status==="preparing").length,rev=T.filter(o=>o.status!=="cancelled").reduce((s,o)=>s+o.total,0);
+ $("stats").innerHTML=[["🔔",n,"جديد"],["👨‍🍳",pc,"قيد التحضير"],["📦",T.length,"طلبات اليوم"],["💰",fmt(rev),"إيرادات اليوم"]].map(([i,v,l])=>`<div class="stat"><small>${i}</small><b>${v}</b><span>${l}</span></div>`).join("");
+ const nb=$("nb");nb.textContent=n;nb.hidden=!n}
+const OPEN=new Set();
+document.addEventListener("toggle",e=>{const d=e.target;if(d.classList&&d.classList.contains("catbox"))d.open?OPEN.add(d.dataset.c):OPEN.delete(d.dataset.c)},true);
