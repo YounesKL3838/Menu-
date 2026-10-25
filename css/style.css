@@ -111,3 +111,9 @@ header>span{display:contents}header{justify-content:flex-end;align-items:center;
 @keyframes sxs{to{background-position:-200% 0}}
 @keyframes sxf{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--x),330px) rotate(var(--r))}}
 @media (prefers-reduced-motion:reduce){.sx *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}.sx-cf{display:none}}
+
+/* زر التأكيد المتوهج */
+#sb{background:linear-gradient(135deg,#ff2a36,#b3121b)!important;color:#fff!important;border:0;animation:sbg 1.6s ease-in-out infinite}
+#sb:disabled{animation:none;box-shadow:none}
+@keyframes sbg{0%,100%{box-shadow:0 0 8px 1px #ff2a3680,0 0 0 0 #ff2a3655}50%{box-shadow:0 0 26px 7px #ff2a36aa,0 0 0 10px #ff2a3600}}
+@media (prefers-reduced-motion:reduce){#sb{animation:none;box-shadow:0 0 18px 4px #ff2a3680}}
