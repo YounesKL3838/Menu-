@@ -4,15 +4,15 @@ let CT=null,SUBMITTING=false;
 async function loadConfig(){
  if(!window.sb)throw new Error("supabase-config.js غير مضبوط");
  const T=(t,f)=>{const r=sb.from(t).select("*");return f?f(r):r};
- const R=await Promise.all([T("categories",r=>r.eq("is_active",true).order("sort_order")),T("products",r=>r.order("sort_order")),T("product_sizes",r=>r.order("sort_order")),T("product_extras",r=>r.order("sort_order")),T("option_groups"),T("group_options",r=>r.order("sort_order")),T("product_removables",r=>r.order("sort_order")),T("delivery_zones",r=>r.eq("is_active",true).order("sort_order")),sb.from("restaurant_settings").select("*").eq("id",1).maybeSingle()]);
- const bad=R.find(x=>x.error);if(bad)throw bad.error;
- const [cats,prods,sizes,extras,groups,opts,rms,zones,st]=R.map(x=>x.data);
+ const R=await Promise.all([T("categories",r=>r.eq("is_active",true).order("sort_order")),T("products",r=>r.order("sort_order")),T("product_sizes",r=>r.order("sort_order")),T("product_extras",r=>r.order("sort_order")),T("option_groups"),T("group_options",r=>r.order("sort_order")),T("product_removables",r=>r.order("sort_order")),T("delivery_zones",r=>r.eq("is_active",true).order("sort_order")),sb.from("restaurant_settings").select("*").eq("id",1).maybeSingle(),sb.from("branding").select("*").eq("id",1).maybeSingle()]);
+ const bad=R.slice(0,9).find(x=>x.error);if(bad)throw bad.error;
+ const [cats,prods,sizes,extras,groups,opts,rms,zones,st,br0]=R.map(x=>x.data);const br=br0||{};
  if(!st||!cats.length)throw new Error("بيانات المطعم غير موجودة (شغّل seed.sql)");
  const by=(a,k)=>(a||[]).reduce((m,x)=>((m[x[k]]=m[x[k]]||[]).push(x),m),{});
  const S=by(sizes,"product_id"),E=by(extras,"product_id"),M=by(rms,"product_id"),G=by(groups,"product_id"),O=by(opts,"group_id");
  const pr=(row,sz)=>{const sp=row.size_prices;if(sp&&Object.keys(sp).length){const m={};sz.forEach(s=>m[s.n]=sp[s.id]||0);return m}return row.price||0};
- Object.assign(CONFIG,st.content||{});
- Object.assign(CONFIG,{phone:st.phone,map:st.map_url,social:st.social||{},schedule:st.schedule,dine:st.dine_enabled,tablesList:st.tables_list,logo:st.logo_url||"",cover:st.cover_url||"",heroBg:st.hero_url||""});
+ Object.assign(CONFIG,st.content||{},br.content||{});
+ Object.assign(CONFIG,{phone:st.phone,map:st.map_url,social:st.social||{},schedule:st.schedule,dine:st.dine_enabled,tablesList:st.tables_list,logo:br.logo_url||st.logo_url||"",cover:br.cover_url||st.cover_url||"",heroBg:br.hero_url||st.hero_url||""});
  CONFIG.cats=cats.map(c=>({id:c.id,n:c.name_ar,f:c.name_fr||"",e:c.emoji||"🍽️"}));
  CONFIG.zones=zones.map(z=>({id:z.id,n:z.name_ar,f:z.name_fr||"",p:z.fee}));
  CONFIG.items=prods.map(p=>{
