@@ -1,23 +1,60 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="dark" style="color-scheme: dark;"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>L’Antica Forno Medea</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-</head><body>
-<div id="bgimg"></div><div id="hbg"></div>
-<div class="wrap">
-<header><div class="logo" id="logo"></div><span><div class="srch"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input type="search" id="q" autocomplete="off" onfocus="this.parentNode.classList.add('open')" onblur="if(!this.value)this.parentNode.classList.remove('open')" oninput="QS=this.value.trim();paint()"></div> <button class="btn sec" id="lb" onclick="setLang()">FR</button> </span></header>
-<section class="hero"><div id="hl"></div><div id="ti"></div><h1 id="tg" data-nt="">جميع أطباقك المفضلة في مكان واحد</h1><p id="sub"></p><button class="btn cta" onclick="go('cats')"><span>اكتشف قائمتنا</span><i aria-hidden="true">↓</i></button></section>
-<div class="info"><div>🕒 <span id="hrs"></span></div><div>📍 <span id="cty"></span></div></div>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maison Noor | متجر أزياء رجالية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/store.css">
+</head>
+<body>
+<header><div class="wrap bar">
+<a class="logo" href="#top">Maison Noor</a>
+<nav class="main"><a href="#new" data-i="nNew"></a><a href="#cats" data-i="nCats"></a><a href="#best" data-i="nBest"></a><a href="#about" data-i="nAbout"></a></nav>
+<span class="sp"></span>
+<label class="search hide-s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="qin" type="search" data-ip="search" aria-label="search"></label>
+<button class="lang" id="lang" type="button"></button>
+<button class="ib" type="button" id="cart" aria-label="cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 12H6zM9 8a3 3 0 0 1 6 0"/></svg><span class="badge" id="count">0</span></button>
+</div></header>
 
+<main id="top" class="wrap">
+<div class="msearch"><label class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="qin" type="search" data-ip="search" aria-label="search"></label></div>
+<div class="hero">
+<div><h1 data-i="h1"></h1><p data-i="sub"></p>
+<div class="btns"><a class="btn pri" href="#best" data-i="shop"></a><a class="btn sec" href="#new" data-i="explore"></a></div></div>
+<div class="stage" aria-hidden="true"><svg viewBox="0 0 120 140" fill="none"><path d="M38 14 60 22 82 14 106 34 96 60 86 54V126H34V54L24 60 14 34Z" fill="#1C1C1C"/><path d="M60 22 46 50 60 126 74 50Z" fill="#FAFAFA"/><path d="M60 22 52 14M60 22 68 14" stroke="#DCDCDC" stroke-width="3"/><circle cx="60" cy="70" r="2.2" fill="#555555"/><circle cx="60" cy="88" r="2.2" fill="#555555"/></svg></div>
+</div>
 
-<h2 id="menu">قائمة الطعام</h2><div class="cats" id="cats"></div><div class="grid" id="list"></div>
-<footer><button class="btn sec" id="dz" onclick="showZones()">أسعار التوصيل في ولاية المدية</button><div class="fn" id="fnm" data-nt=""></div><p id="fab2" data-nt=""></p><div id="fi" data-nt=""></div><div id="contact"></div><div id="cpy" data-nt=""></div><div id="dev" data-nt=""></div></footer></div>
-<button class="fab" id="fab" onclick="openCart()" aria-label="cart"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle><path d="M2 3h3l2.7 12.4a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L20 7H6"></path></svg><span id="fl2" data-nt=""></span><span id="fq"></span><span id="ft" style="display:none"></span></button>
-<div id="splash"><div id="sbg"></div><div class="sc"><div id="sl" class="logo"></div><div id="sw1" class="sw" data-nt=""></div><p id="sw2" data-nt=""></p><p class="sp" data-nt="">اختر اللغة · Choisissez la langue</p><div class="sb"><button class="btn" onclick="pick('ar')">العربية</button><button class="btn" onclick="pick('fr')">Français</button></div><div id="sc" class="sct"></div><div id="scp" class="scp" data-nt=""></div></div></div>
-<div class="ov" id="ov" onclick="if(event.target===this)closeS()"><div class="sheet" id="sh"></div></div>
+<section id="res" hidden><div class="head"><h2 id="resT"></h2><button class="btn sec sm" type="button" id="clr" data-i="clear"></button></div><div class="grid" id="g3"></div></section>
+<section id="new"><div class="head"><h2 data-i="newT"></h2><a href="#" data-i="all"></a></div><div class="grid" id="g1"></div></section>
+<section id="cats"><h2 data-i="catT"></h2><div class="cats" id="cg"></div></section>
+<section id="best"><div class="head"><h2 data-i="bestT"></h2><a href="#" data-i="all"></a></div><div class="grid" id="g2"></div></section>
+<section><div class="banner"><h2 data-i="banT"></h2><p data-i="banP"></p><a class="btn" href="#new" data-i="banB"></a></div></section>
+<section id="about"><div class="about"><div><h2 data-i="abT"></h2><p data-i="abP"></p></div><div class="stage" style="aspect-ratio:5/4" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none"><path d="M30 20h60l8 30-14 6v52H36V56l-14-6Z" fill="#555555"/><path d="M52 20c2 8 14 8 16 0" stroke="#FAFAFA" stroke-width="3"/></svg></div></div></section>
+<section><h2 data-i="qT"></h2><div class="quotes" id="qs"></div></section>
+<section><div class="news"><h2 data-i="nlT"></h2><p data-i="nlP" style="margin:0"></p>
+<form id="nl"><input type="email" required data-ip="email" aria-label="email"><button class="btn pri" data-i="sub2"></button></form></div></section>
+</main>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
-<script src="js/supabase-config.js"></script>
-<script src="js/app.js"></script>
-</body></html>
+<footer><div class="wrap"><div class="fcols">
+<div><div class="logo">Maison Noor</div><p data-i="fAbout" style="opacity:.7;max-width:34ch"></p></div>
+<div><h4 data-i="fShop"></h4><a href="#new" data-i="nNew"></a><a href="#best" data-i="nBest"></a><a href="#cats" data-i="nCats"></a></div>
+<div><h4 data-i="fHelp"></h4><a href="#" data-i="fShip"></a><a href="#" data-i="fRet"></a><a href="#" data-i="fFaq"></a></div>
+<div><h4 data-i="fContact"></h4><a href="#">contact@maisonnoor.example</a><a href="#">Instagram</a><a href="#">Facebook</a></div>
+</div><div class="copy">© 2026 Maison Noor</div></div></footer>
+
+<nav class="bottom" aria-label="menu">
+<a href="#top"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11 12 4l8 7v9H4z"/></svg><span data-i="bHome"></span></a>
+<a href="#cats"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg><span data-i="nCats"></span></a>
+<a href="#" id="bs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span data-i="bSearch"></span></a>
+<a href="#" id="bf"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.500-7 10-7 10Z"/></svg><span data-i="bFav"></span></a>
+</nav>
+<div class="toast" id="toast" role="status"></div>
+
+<div id="modal"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/store.js"></script>
+</body>
+</html>
