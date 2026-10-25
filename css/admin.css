@@ -70,3 +70,6 @@ main h3{margin:22px 4px 8px;font-size:16px;color:var(--gold)}
 .top .tabs{flex:none;padding:8px 14px 10px;gap:8px}.top .tabs .b{flex:1 0 auto}#toast{top:112px}
 .t-confirmed{background:#4c8dff26;color:#7aa9ff}.st-confirmed{--c:#4c8dff}
 .b.ok{background:linear-gradient(135deg,#1f9d6e,#127a52);box-shadow:0 6px 16px #1f9d6e55;width:100%;margin-top:10px;padding:13px;font-size:16px}
+
+.b.okb{background:linear-gradient(135deg,#1f9d6e,#127a52);color:#fff;border:0;padding:7px 14px;font-size:14px}
+.ce{margin:0 0 6px;border-bottom:1px solid var(--line)}.ce summary{cursor:pointer;color:var(--mut);padding:2px 0 8px;font-size:13px}.catedit{padding:4px 0 12px}
