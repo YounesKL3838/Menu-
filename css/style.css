@@ -117,3 +117,5 @@ header>span{display:contents}header{justify-content:flex-end;align-items:center;
 #sb:disabled{animation:none;box-shadow:none}
 @keyframes sbg{0%,100%{box-shadow:0 0 8px 1px #ff2a3680,0 0 0 0 #ff2a3655}50%{box-shadow:0 0 26px 7px #ff2a36aa,0 0 0 10px #ff2a3600}}
 @media (prefers-reduced-motion:reduce){#sb{animation:none;box-shadow:0 0 18px 4px #ff2a3680}}
+
+#list{min-height:32vh;touch-action:pan-y pinch-zoom}
