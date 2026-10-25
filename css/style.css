@@ -92,3 +92,22 @@ header>span{display:contents}header{justify-content:flex-end;align-items:center;
 .scp{font-size:12px;color:#fff;opacity:.75;line-height:1.7;margin-top:8px}
 .cg{border:1px solid var(--line);border-radius:14px;padding:10px;margin:12px 0}.cg .ch{border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:6px}
 #bgimg{position:fixed;inset:0;z-index:-1;background-size:cover;background-position:center;opacity:.25}
+
+/* نجاح الطلب */
+.sx{position:relative;overflow:hidden;text-align:center;padding:4px 2px 2px}
+.sx-ic{width:98px;height:98px;margin:6px auto 4px;display:block;animation:sxp .6s cubic-bezier(.2,1.3,.4,1) both;filter:drop-shadow(0 8px 18px #34c38f55)}
+.sx-ic circle{fill:none;stroke:#34c38f;stroke-width:5;stroke-dasharray:289;stroke-dashoffset:289;transform-box:fill-box;transform-origin:center;transform:rotate(-90deg);animation:sxd .7s .1s ease forwards}
+.sx-ic path{fill:none;stroke:#34c38f;stroke-width:6.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:62;stroke-dashoffset:62;animation:sxd .45s .7s ease forwards}
+.sx h3{margin:6px 0}.sx-msg{margin:8px 4px;line-height:1.7}
+.sx-no{display:inline-block;margin:2px 0;padding:6px 16px;border-radius:999px;border:1px dashed #ffb703;color:#ffb703;background:linear-gradient(110deg,transparent 30%,#ffb70026 50%,transparent 70%) 0 0/200% 100%;animation:sxs 2.2s 1.4s infinite linear}
+.sx-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:10px 12px;text-align:start;margin:10px 0;line-height:1.8}
+.sx-items{margin-top:6px;border-top:1px dashed rgba(255,255,255,.14);padding-top:4px}
+.sx-u{opacity:0;animation:sxu .5s both;animation-delay:calc(var(--k,0)*.12s + .75s)}
+.sx-cf{position:absolute;inset:0 0 auto;height:0;pointer-events:none}
+.sx-cf i{position:absolute;top:-10px;width:8px;height:14px;border-radius:2px;opacity:0;animation:sxf 1.7s var(--dl) ease-out forwards}
+@keyframes sxd{to{stroke-dashoffset:0}}
+@keyframes sxp{from{transform:scale(.3);opacity:0}to{transform:none;opacity:1}}
+@keyframes sxu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes sxs{to{background-position:-200% 0}}
+@keyframes sxf{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--x),330px) rotate(var(--r))}}
+@media (prefers-reduced-motion:reduce){.sx *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}.sx-cf{display:none}}
