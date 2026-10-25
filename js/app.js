@@ -262,4 +262,13 @@ const chl=(it,n,k)=>{const o=(((it[k||"ch"])||{}).o||[]).find(x=>x.n===n);return
 let _y=scrollY;addEventListener("scroll",()=>{const hb=document.getElementById("hbg");if(hb)hb.style.opacity=Math.max(0,1-scrollY/360);const y=scrollY,h=document.getElementById("hl");document.body.style.setProperty("--dy",(y>_y?28:-28)+"px");_y=y;if(h){h.style.transform=`translateY(${Math.min(y,300)*.25}px)`;h.style.opacity=Math.max(0,1-y/380)}},{passive:true});
 const IO=typeof IntersectionObserver!=="undefined"?new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle("in",e.isIntersecting)),{threshold:.06}):null;
 function reveal(){document.querySelectorAll("#list .card").forEach(c=>{c.classList.add("rv");const r=c.getBoundingClientRect();if(!IO||(r.top<innerHeight&&r.bottom>0))c.classList.add("in");IO&&IO.observe(c)})}
+/* السحب يمينًا/يسارًا لتغيير الفئة */
+(function(){const el=$("list");let x0=0,y0=0,on=false;
+ el.addEventListener("touchstart",e=>{if(e.touches.length!==1){on=false;return}x0=e.touches[0].clientX;y0=e.touches[0].clientY;on=true},{passive:true});
+ el.addEventListener("touchcancel",()=>{on=false},{passive:true});
+ el.addEventListener("touchend",e=>{if(!on)return;on=false;if(QS)return;const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;
+  if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.6)return;
+  const i=CONFIG.cats.findIndex(c=>c.id===cat),rtl=document.documentElement.dir==="rtl",n=i+((dx>0)===rtl?1:-1);
+  if(i<0||n<0||n>=CONFIG.cats.length)return;cat=CONFIG.cats[n].id;ANIM=1;paint();
+  setTimeout(()=>{const c=document.querySelector("#cats .chip.on");c&&c.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"})},30)},{passive:true})})();
 boot();
