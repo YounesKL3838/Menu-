@@ -262,13 +262,20 @@ const chl=(it,n,k)=>{const o=(((it[k||"ch"])||{}).o||[]).find(x=>x.n===n);return
 let _y=scrollY;addEventListener("scroll",()=>{const hb=document.getElementById("hbg");if(hb)hb.style.opacity=Math.max(0,1-scrollY/360);const y=scrollY,h=document.getElementById("hl");document.body.style.setProperty("--dy",(y>_y?28:-28)+"px");_y=y;if(h){h.style.transform=`translateY(${Math.min(y,300)*.25}px)`;h.style.opacity=Math.max(0,1-y/380)}},{passive:true});
 const IO=typeof IntersectionObserver!=="undefined"?new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle("in",e.isIntersecting)),{threshold:.06}):null;
 function reveal(){document.querySelectorAll("#list .card").forEach(c=>{c.classList.add("rv");const r=c.getBoundingClientRect();if(!IO||(r.top<innerHeight&&r.bottom>0))c.classList.add("in");IO&&IO.observe(c)})}
-/* السحب يمينًا/يسارًا لتغيير الفئة */
-(function(){const el=$("list");let x0=0,y0=0,on=false;
- el.addEventListener("touchstart",e=>{if(e.touches.length!==1){on=false;return}x0=e.touches[0].clientX;y0=e.touches[0].clientY;on=true},{passive:true});
- el.addEventListener("touchcancel",()=>{on=false},{passive:true});
- el.addEventListener("touchend",e=>{if(!on)return;on=false;if(QS)return;const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;
-  if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.6)return;
-  const i=CONFIG.cats.findIndex(c=>c.id===cat),rtl=document.documentElement.dir==="rtl",n=i+((dx>0)===rtl?1:-1);
-  if(i<0||n<0||n>=CONFIG.cats.length)return;cat=CONFIG.cats[n].id;ANIM=1;paint();
-  setTimeout(()=>{const c=document.querySelector("#cats .chip.on");c&&c.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"})},30)},{passive:true})})();
+/* السحب يمينًا/يسارًا لتغيير الفئة مع حركة انزلاق */
+(function(){const el=$("list"),rmq=matchMedia("(prefers-reduced-motion:reduce)");let x0=0,y0=0,on=false,hz=false,busy=false;
+ const reset=()=>{el.style.transition="transform .3s cubic-bezier(.2,1.2,.4,1),opacity .2s";el.style.transform="";el.style.opacity=""};
+ const can=dx=>{const i=CONFIG.cats.findIndex(c=>c.id===cat),rtl=document.documentElement.dir==="rtl",n=i+((dx>0)===rtl?1:-1);return i>=0&&n>=0&&n<CONFIG.cats.length?n:-1};
+ el.addEventListener("touchstart",e=>{if(busy||e.touches.length!==1||QS){on=false;return}x0=e.touches[0].clientX;y0=e.touches[0].clientY;on=true;hz=false;el.style.transition="none"},{passive:true});
+ el.addEventListener("touchmove",e=>{if(!on||rmq.matches)return;const dx=e.touches[0].clientX-x0,dy=e.touches[0].clientY-y0;
+  if(!hz){if(Math.abs(dx)>12&&Math.abs(dx)>Math.abs(dy)*1.4)hz=true;else return}
+  el.style.transform=`translateX(${dx*(can(dx)<0?.25:.6)}px)`;el.style.opacity=String(1-Math.min(Math.abs(dx)/500,.35))},{passive:true});
+ el.addEventListener("touchcancel",()=>{on=false;if(hz)reset()},{passive:true});
+ el.addEventListener("touchend",e=>{if(!on)return;on=false;const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0,n=can(dx);
+  if(QS||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.6||n<0){if(hz)reset();return}
+  const go=()=>{cat=CONFIG.cats[n].id;ANIM=0;paint();setTimeout(()=>{const c=document.querySelector("#cats .chip.on");c&&c.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"})},30)};
+  if(rmq.matches){go();return}
+  busy=true;const s=dx>0?1:-1;el.style.transition="transform .16s ease-in,opacity .16s";el.style.transform=`translateX(${s*45}%)`;el.style.opacity="0";
+  setTimeout(()=>{go();el.style.transition="none";el.style.transform=`translateX(${-s*45}%)`;el.style.opacity="0";void el.offsetWidth;
+   el.style.transition="transform .3s cubic-bezier(.2,.9,.3,1),opacity .25s";el.style.transform="";el.style.opacity="";setTimeout(()=>{busy=false;el.style.transition=""},320)},170)},{passive:true})})();
 boot();
