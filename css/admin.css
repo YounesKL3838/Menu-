@@ -73,3 +73,8 @@ main h3{margin:22px 4px 8px;font-size:16px;color:var(--gold)}
 
 .b.okb{background:linear-gradient(135deg,#1f9d6e,#127a52);color:#fff;border:0;padding:7px 14px;font-size:14px}
 .ce{margin:0 0 6px;border-bottom:1px solid var(--line)}.ce summary{cursor:pointer;color:var(--mut);padding:2px 0 8px;font-size:13px}.catedit{padding:4px 0 12px}
+
+.zr{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:7px 10px;margin:5px 0;border-radius:12px}.zr:hover{transform:none;box-shadow:none}
+.zr input:not([type=checkbox]){width:auto;padding:6px 9px;font-size:13px;margin:0;border-radius:9px}
+.zr .z-name_ar,.zr .z-name_fr{flex:1 1 110px;min-width:90px}.zr .z-fee{flex:0 0 78px}.zr .z-sort_order{flex:0 0 58px}
+.zr .b{padding:5px 11px;font-size:13px}.zr .chk{font-size:12px;display:flex;align-items:center;gap:4px;white-space:nowrap;color:var(--mut)}
