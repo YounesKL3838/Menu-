@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Maison Noor | متجر أزياء رجالية</title>
+<title>Maison Trendy | تراندي مود</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/store.css">
@@ -11,11 +11,11 @@
 <body>
 <header><div class="wrap bar">
 <a class="logo" href="#top">Maison Noor</a>
-<nav class="main"><a href="#new" data-i="nNew"></a><a href="#cats" data-i="nCats"></a><a href="#best" data-i="nBest"></a><a href="#about" data-i="nAbout"></a></nav>
+<nav class="main"><a href="#new" data-i="nNew"></a><a href="#looks" id="nlk" data-i="nLooks" hidden></a><a href="#cats" data-i="nCats"></a><a href="#best" data-i="nBest"></a><a href="#about" data-i="nAbout"></a></nav>
 <span class="sp"></span>
 <label class="search hide-s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="qin" type="search" data-ip="search" aria-label="search"></label>
 <button class="lang" id="lang" type="button"></button>
-<button class="ib" type="button" id="cart" aria-label="cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 12H6zM9 8a3 3 0 0 1 6 0"/></svg><span class="badge" id="count">0</span></button>
+<button class="ib" type="button" id="cart" aria-label="cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 12H6zM9 8a3 3 0 0 1 6 0"/></svg><span class="badge cnt" id="count">0</span></button>
 </div></header>
 
 <main id="top" class="wrap">
@@ -28,6 +28,7 @@
 
 <section id="res" hidden><div class="head"><h2 id="resT"></h2><button class="btn sec sm" type="button" id="clr" data-i="clear"></button></div><div class="grid" id="g3"></div></section>
 <section id="new"><div class="head"><h2 data-i="newT"></h2><a href="#" data-i="all"></a></div><div class="grid" id="g1"></div></section>
+<section id="looks" hidden><div class="head"><h2 data-i="looksT"></h2></div><div id="lk"></div></section>
 <section id="cats"><h2 data-i="catT"></h2><div class="cats" id="cg"></div></section>
 <section id="best"><div class="head"><h2 data-i="bestT"></h2><a href="#" data-i="all"></a></div><div class="grid" id="g2"></div></section>
 <section><div class="banner"><h2 data-i="banT"></h2><p data-i="banP"></p><a class="btn" href="#new" data-i="banB"></a></div></section>
@@ -50,6 +51,7 @@
 <a href="#" id="bs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span data-i="bSearch"></span></a>
 <a href="#" id="bf"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.500-7 10-7 10Z"/></svg><span data-i="bFav"></span></a>
 </nav>
+<button class="fcart" id="fcart" type="button" aria-label="cart"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 12H6zM9 8a3 3 0 0 1 6 0"/></svg><span class="badge cnt">0</span></button>
 <div class="toast" id="toast" role="status"></div>
 
 <div id="modal"></div>

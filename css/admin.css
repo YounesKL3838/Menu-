@@ -46,3 +46,14 @@ main{animation:fadeIn .4s ease both}
 .bars div{transform-origin:bottom;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
 @keyframes grow{from{transform:scaleY(0)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---- catalog (categories with products inside) + size/color groups ---- */
+.cg{background:var(--white);border:1px solid var(--line);border-radius:16px;margin-top:12px;padding:0 12px 4px}
+.cg>summary{cursor:pointer;padding:12px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap;list-style:none}
+.cg>summary::-webkit-details-marker{display:none}
+.cg .grid{margin:4px 0 14px}
+.sub{margin:10px 0 6px;padding-inline-start:12px;border-inline-start:2px solid var(--line)}
+.sub .row{margin-bottom:6px}
+.vg{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:10px}
+.vg .vcs{margin:8px 0 6px}
+.vr{grid-template-columns:1fr 90px 40px}
