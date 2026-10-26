@@ -38,6 +38,12 @@ Object.assign(T.ar,{catalog:"المنتجات والتصنيفات",subcat:"ال
 Object.assign(T.fr,{catalog:"Produits et catégories",subcat:"Sous-catégorie",addColor:"couleur",addSize:"Ajouter une taille",addCat:"Catégorie",uncat:"Sans catégorie",parent:"Catégorie parente (facultatif)",lookImgs:"Photos du look (plusieurs possibles)"});
 Object.assign(T.ar,{landings:"صفحات الهبوط",landing:"صفحة هبوط",lpType:"النوع",lpProduct:"منتج",lpLook:"إطلالة",lpTarget:"المنتج أو الإطلالة",lpSlug:"الرابط (إنجليزي وأرقام و -)",lpHead:"العنوان الرئيسي",lpSub:"عنوان فرعي",lpBen:"المزايا (كل ميزة في سطر)",lpCta:"نص زر الطلب",lpForm:"إظهار نموذج الطلب",lpLink:"رابط الصفحة",lpCopy:"نسخ الرابط",lpCopied:"تم نسخ الرابط",lpOpen:"فتح",lpSlugBad:"الرابط غير صالح: 3 إلى 60 حرفًا إنجليزيًا صغيرًا أو أرقامًا أو -"});
 Object.assign(T.fr,{landings:"Pages de vente",landing:"Page de vente",lpType:"Type",lpProduct:"Produit",lpLook:"Look",lpTarget:"Produit ou look",lpSlug:"Lien (a-z, chiffres et -)",lpHead:"Titre principal",lpSub:"Sous-titre",lpBen:"Avantages (un par ligne)",lpCta:"Texte du bouton",lpForm:"Afficher le formulaire de commande",lpLink:"Lien de la page",lpCopy:"Copier le lien",lpCopied:"Lien copié",lpOpen:"Ouvrir",lpSlugBad:"Lien invalide : 3 à 60 caractères a-z, chiffres ou -"});
+Object.assign(T.ar,{site:"الموقع",sNote:"قسم المالك: يظهر بالضغط على عنوان اللوحة 5 مرات متتالية. التعديل مسموح للمسؤولين فقط.",sBrand:"الهوية",sName:"اسم المتجر",sLogo:"الشعار (لوغو)",sHero:"صورة الواجهة الرئيسية",sAboutImg:"صورة قسم «من نحن»",sTexts:"النصوص والعناوين",sBlank:"اترك الحقل فارغًا لاستخدام النص الافتراضي.",sH1:"العنوان الرئيسي",sSub:"الوصف تحت العنوان",sShop:"زر التسوق",sExplore:"زر المجموعة الجديدة",sBanT:"عنوان البانر",sBanP:"نص البانر",sBanB:"زر البانر",sAbT:"عنوان «من نحن»",sAbP:"نص «من نحن»",sFAbout:"نص التذييل",sCopy:"حقوق الطبع والنشر",sContact:"التواصل ومواقع التواصل الاجتماعي",sPhone:"رقم الهاتف",sWa:"رقم واتساب",sDev:"المطوّر",sDevName:"اسم المطوّر",sDevUrl:"رابط المطوّر (اختياري)",sUrlBad:"الروابط يجب أن تبدأ بـ https://"});
+Object.assign(T.fr,{site:"Site",sNote:"Espace propriétaire : s’affiche en touchant 5 fois le titre du tableau de bord. Réservé aux administrateurs.",sBrand:"Identité",sName:"Nom de la boutique",sLogo:"Logo",sHero:"Image de la page d’accueil",sAboutImg:"Image de la section À propos",sTexts:"Textes et titres",sBlank:"Laissez vide pour garder le texte par défaut.",sH1:"Titre principal",sSub:"Texte sous le titre",sShop:"Bouton d’achat",sExplore:"Bouton nouvelle collection",sBanT:"Titre de la bannière",sBanP:"Texte de la bannière",sBanB:"Bouton de la bannière",sAbT:"Titre À propos",sAbP:"Texte À propos",sFAbout:"Texte du pied de page",sCopy:"Droits d’auteur",sContact:"Contact et réseaux sociaux",sPhone:"Téléphone",sWa:"Numéro WhatsApp",sDev:"Développeur",sDevName:"Nom du développeur",sDevUrl:"Lien du développeur (facultatif)",sUrlBad:"Les liens doivent commencer par https://"});
+Object.assign(T.ar,{imgHint:"تُقصّ الصور تلقائيًا من الوسط إلى مقاس إنستغرام العمودي 4:5 (حتى 1440×1800) بجودة عالية وحجم أصغر."});
+Object.assign(T.fr,{imgHint:"Les images sont recadrées automatiquement au centre au format portrait Instagram 4:5 (jusqu’à 1440×1800), en haute qualité et poids réduit."});
+Object.assign(T.ar,{sHTitle:"عنوان الشريط العلوي (اتركه فارغًا لاسم المتجر)"});
+Object.assign(T.fr,{sHTitle:"Titre de la barre supérieure (vide = nom de la boutique)"});
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let lang=(()=>{try{return localStorage.getItem('alang')||'ar'}catch(e){return 'ar'}})();
@@ -75,11 +81,11 @@ function loginView(msg){$('#app').innerHTML=`<div class="login"><div class="row"
  <label>${t('pass')}</label><input id="lp" type="password" dir="ltr" required autocomplete="current-password">
  <p style="color:var(--red)">${esc(msg||'')}</p><button class="btn pri">${t('login')}</button></form></div>`}
 async function doLogin(e){e.preventDefault();const {error}=await sb.auth.signInWithPassword({email:$('#le').value.trim(),password:$('#lp').value});if(error)return loginView(error.message);boot()}
-async function logout(){await sb.auth.signOut();boot()}
-function shell(){$('#app').innerHTML=`<div class="top"><div class="row"><b class="sp">${t('title')}</b>${langBtn()}<button class="btn sm" onclick="logout()">${t('logout')}</button></div>
- <div class="tabs">${['dash','catalog','orders','looks','landings'].map(k=>`<button data-t="${k}" class="${k===tab?'on':''}" onclick="go('${k}')">${t(k)}</button>`).join('')}</div></div><main id="main"></main>`}
+async function logout(){try{sessionStorage.removeItem('owner')}catch(e){}await sb.auth.signOut();boot()}
+function shell(){$('#app').innerHTML=`<div class="top"><div class="row"><b class="sp" id="ttl" onclick="ownerTap()" style="user-select:none;cursor:default">${t('title')}</b>${langBtn()}<button class="btn sm" onclick="logout()">${t('logout')}</button></div>
+ <div class="tabs">${tabsList().map(k=>`<button data-t="${k}" class="${k===tab?'on':''}" onclick="go('${k}')">${t(k)}</button>`).join('')}</div></div><main id="main"></main>`}
 async function go(k){tab=k;document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===k));$('#main').innerHTML='…';
-  try{await({dash:vDash,catalog:vCatalog,orders:vOrders,looks:vLooks,landings:vLandings}[k])()}catch(e){fail(e)}}
+  try{await({dash:vDash,catalog:vCatalog,orders:vOrders,looks:vLooks,landings:vLandings,site:vSite}[k])()}catch(e){fail(e)}}
 function modal(h){$('#modal').innerHTML=`<div class="overlay" onclick="if(event.target===this)closeM()"><div class="sheet">${h}</div></div>`}
 function closeM(){$('#modal').innerHTML='';EDIT=null}
 
@@ -153,7 +159,7 @@ async function openProduct(id,catId){
   <div class="two"><div><label>${t('cat')}</label><select id="p_ct" onchange="fillSub()"><option value="">—</option>${cats.filter(c=>!c.parent_id).map(c=>`<option value="${c.id}" ${c.id===p.category_id?'selected':''}>${cname(c)}</option>`).join('')}</select></div><div><label>${t('subcat')}</label><select id="p_sc"></select></div></div>
   <div class="chk"><label><input type="checkbox" id="p_new" ${p.is_new?'checked':''}>${t('isNew')}</label><label><input type="checkbox" id="p_ft" ${p.is_featured?'checked':''}>${t('feat')}</label><label><input type="checkbox" id="p_bs" ${p.is_bestseller?'checked':''}>${t('best')}</label></div>
   <label>${t('variants')}</label><div id="vars">${(sizes.length?sizes:['']).map(s=>vgroup(s,bySize[s]||[{stock:0}])).join('')}</div><button class="btn sm" type="button" onclick="addSize()">+ ${t('addSize')}</button>
-  <label>${t('images')}</label><div id="imgs"></div><input type="file" id="p_files" accept="image/*" multiple hidden onchange="addFiles(this.files)"><button class="btn sm" type="button" onclick="$('#p_files').click()">+ ${t('pick')}</button>
+  <label>${t('images')}</label><p class="muted">${t('imgHint')}</p><div id="imgs"></div><input type="file" id="p_files" accept="image/*" multiple hidden onchange="addFiles(this.files)"><button class="btn sm" type="button" onclick="$('#p_files').click()">+ ${t('pick')}</button>
   <p style="margin-top:20px"><button class="btn pri" id="p_save" onclick="saveProduct()">${t('save')}</button></p>`);
   fillSub(p.subcategory_id);renderImgs()}
 function fillSub(sel){const pid=$('#p_ct').value;$('#p_sc').innerHTML=`<option value="">—</option>`+cats.filter(c=>pid&&c.parent_id===pid).map(c=>`<option value="${c.id}" ${c.id===sel?'selected':''}>${cname(c)}</option>`).join('')}
@@ -170,7 +176,14 @@ function renderImgs(){const box=$('#imgs');if(!box)return;box.innerHTML=EDIT.img
 function setPrimary(i){EDIT.imgs.forEach((m,j)=>m.primary=i===j);renderImgs()}
 function moveImg(i,d){const j=i+d;if(j<0||j>=EDIT.imgs.length)return;[EDIT.imgs[i],EDIT.imgs[j]]=[EDIT.imgs[j],EDIT.imgs[i]];renderImgs()}
 function rmImg(i){const [m]=EDIT.imgs.splice(i,1);if(m.id)EDIT.delImgs.push(m);if(m.primary&&EDIT.imgs[0])EDIT.imgs[0].primary=true;renderImgs()}
-async function shrink(f){const bm=await createImageBitmap(f);const k=Math.min(1,1600/Math.max(bm.width,bm.height));const c=document.createElement('canvas');c.width=Math.round(bm.width*k);c.height=Math.round(bm.height*k);c.getContext('2d').drawImage(bm,0,0,c.width,c.height);return new Promise((r,x)=>c.toBlob(b=>b?r(b):x(new Error('image')),'image/webp',.85))}
+async function shrink(f,ratio){
+  const bm=await createImageBitmap(f);let sx=0,sy=0,sw=bm.width,sh=bm.height;
+  if(ratio){if(sw/sh>ratio){sw=Math.round(sh*ratio);sx=Math.round((bm.width-sw)/2)}else{sh=Math.round(sw/ratio);sy=Math.round((bm.height-sh)/2)}}
+  const k=ratio?Math.min(1,1440/sw):Math.min(1,2000/Math.max(sw,sh));   // never upscale
+  const c=document.createElement('canvas');c.width=Math.round(sw*k);c.height=Math.round(sh*k);
+  const g=c.getContext('2d');g.imageSmoothingEnabled=true;g.imageSmoothingQuality='high';
+  g.drawImage(bm,sx,sy,sw,sh,0,0,c.width,c.height);
+  return new Promise((r,x)=>c.toBlob(b=>b?r(b):x(new Error('image')),'image/webp',.92))}
 const num=v=>v===''||v==null?null:Number(v);
 /* uploads new files, saves order/primary, deletes removed ones. Returns the number of failed uploads. */
 async function syncImages(table,fk,id,folder){
@@ -180,7 +193,7 @@ async function syncImages(table,fk,id,folder){
   for(let i=0;i<EDIT.imgs.length;i++){const m=EDIT.imgs[i];
     if(m.id){await sb.from(table).update({sort_order:i,is_primary:i===pi}).eq('id',m.id);continue}
     m.state='up';renderImgs();let path;
-    try{const blob=await shrink(m.file);path=`${folder}/${id}/${crypto.randomUUID()}.webp`;
+    try{const blob=await shrink(m.file,4/5);path=`${folder}/${id}/${crypto.randomUUID()}.webp`;
       const e=(await sb.storage.from('product-images').upload(path,blob,{contentType:'image/webp'})).error;if(e)throw e;
       const q=await sb.from(table).insert({[fk]:id,path,sort_order:i,is_primary:i===pi}).select('id').single();
       if(q.error){await sb.storage.from('product-images').remove([path]);throw q.error}
@@ -257,12 +270,11 @@ async function openCat(id,parentId){await loadCats();const c=cats.find(x=>x.id==
   <div class="two"><div><label>${t('dsAr')}</label><textarea id="c_da">${esc(g('ar').description)}</textarea></div><div><label>${t('dsFr')}</label><textarea id="c_df">${esc(g('fr').description)}</textarea></div></div>
   <label>${t('parent')}</label><select id="c_pa"><option value="">—</option>${cats.filter(x=>!x.parent_id&&x.id!==id).map(x=>`<option value="${x.id}" ${x.id===c.parent_id?'selected':''}>${cname(x)}</option>`).join('')}</select>
   <div class="two"><div><label>${t('slug')} *</label><input id="c_sl" dir="ltr" value="${esc(c.slug)}"></div><div><label>${t('order')}</label><input id="c_so" type="number" value="${c.sort_order}"></div></div>
-  <label>${t('image')}</label>${c.image_path?`<img class="thumb" src="${esc(pub(c.image_path))}" alt="">`:''}<input type="file" id="c_f" accept="image/*">
   <div class="chk"><label><input type="checkbox" id="c_ac" ${c.is_active?'checked':''}>${t('active')}</label></div>
   <p style="margin-top:20px"><button class="btn pri" id="c_save" onclick="saveCat()">${t('save')}</button></p>`)}
 async function saveCat(){const v=i=>$('#'+i).value.trim();if(!v('c_na')||!v('c_nf')||!v('c_sl'))return toast(t('req'),true);
   const btn=$('#c_save');btn.disabled=true;let up=null;
-  try{let path=EDIT.path;const f=$('#c_f').files[0];
+  try{let path=EDIT.path;const f=null;
     if(f){const blob=await shrink(f);up=`categories/${crypto.randomUUID()}.webp`;const e=(await sb.storage.from('product-images').upload(up,blob,{contentType:'image/webp'})).error;if(e)throw e;path=up}
     const row={slug:v('c_sl').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''),sort_order:parseInt(v('c_so'))||0,is_active:$('#c_ac').checked,image_path:path,parent_id:$('#c_pa').value||null};
     let id=EDIT.id;
@@ -291,7 +303,7 @@ async function openLook(id){
   <div class="two"><div><label>${t('ttlAr')} *</label><input id="l_ta" value="${esc(g('ar').title)}"></div><div><label>${t('ttlFr')} *</label><input id="l_tf" value="${esc(g('fr').title)}"></div></div>
   <div class="two"><div><label>${t('dsAr')}</label><textarea id="l_da">${esc(g('ar').description)}</textarea></div><div><label>${t('dsFr')}</label><textarea id="l_df">${esc(g('fr').description)}</textarea></div></div>
   <div class="two"><div><label>${t('status')}</label><select id="l_st">${['draft','published','archived'].map(s=>`<option value="${s}" ${s===o.status?'selected':''}>${t(s)}</option>`).join('')}</select></div><div><label>${t('order')}</label><input id="l_so" type="number" value="${o.sort_order}"></div></div>
-  <label>${t('lookImgs')} *</label><div id="imgs"></div><input type="file" id="p_files" accept="image/*" multiple hidden onchange="addFiles(this.files)"><button class="btn sm" type="button" onclick="$('#p_files').click()">+ ${t('pick')}</button>
+  <label>${t('lookImgs')} *</label><p class="muted">${t('imgHint')}</p><div id="imgs"></div><input type="file" id="p_files" accept="image/*" multiple hidden onchange="addFiles(this.files)"><button class="btn sm" type="button" onclick="$('#p_files').click()">+ ${t('pick')}</button>
   <label>${t('lookProds')} *</label><div id="l_items"></div><select id="l_add" onchange="lookAdd(this.value)"></select>
   <p style="margin-top:20px"><button class="btn pri" id="l_save" onclick="saveLook()">${t('save')}</button></p>`);
   renderLookItems();renderImgs()}
@@ -381,6 +393,47 @@ async function saveLanding(){
     toast(t('saved'));closeM();go(tab)
   }catch(e){fail(e);btn.disabled=false}}
 async function delLanding(id){if(!confirm(t('confirmDel')))return;const {error}=await sb.from('landing_pages').delete().eq('id',id);if(error)return fail(error);toast(t('deleted'));vLandings()}
+
+/* ---------- site content (owner only, unlocked by tapping the title 5 times) ---------- */
+let _ot=[];
+function tabsList(){let o=false;try{o=sessionStorage.getItem('owner')==='1'}catch(e){}return ['dash','catalog','orders','looks','landings'].concat(o?['site']:[])}
+function ownerTap(){const n=Date.now();_ot=_ot.filter(x=>n-x<4000);_ot.push(n);if(_ot.length>=5){_ot=[];try{sessionStorage.setItem('owner','1')}catch(e){}shell();go('site')}}
+const SITE_FIELDS=[['hTitle','sHTitle'],['h1','sH1'],['sub','sSub'],['shop','sShop'],['explore','sExplore'],['banT','sBanT'],['banP','sBanP'],['banB','sBanB'],['abT','sAbT'],['abP','sAbP'],['fAbout','sFAbout'],['copy','sCopy']];
+const SITE_IMG=[['logo','sLogo'],['hero','sHero'],['about_img','sAboutImg']];
+async function vSite(){
+  const {data,error}=await sb.from('store_settings').select('value').eq('key','site').maybeSingle();if(error)throw error;
+  const S=data?data.value:{};
+  EDIT={site:{logo:S.logo||null,hero:S.hero||null,about_img:S.about_img||null},orig:{logo:S.logo||null,hero:S.hero||null,about_img:S.about_img||null},files:{}};
+  const tx=(l,k)=>((S.t||{})[l]||{})[k]||'',c=S.contact||{},d=S.dev||{};
+  const long=k=>['sub','banP','abP'].includes(k);
+  $('#main').innerHTML=`<p class="muted">${t('sNote')}</p>
+  <div class="card"><b>${t('sBrand')}</b><label>${t('sName')}</label><input id="s_name" value="${esc(S.name)}" placeholder="Maison Noor">
+   ${SITE_IMG.map(([k,lb])=>`<label>${t(lb)}</label><div class="row"><img class="thumb" id="si_${k}" style="width:90px;height:90px;object-fit:contain;${S[k]?'':'display:none'}" src="${S[k]?esc(pub(S[k])):''}" alt=""><input type="file" accept="image/*" style="flex:1" onchange="sitePrev(this,'${k}')"><button class="btn sm red" type="button" onclick="siteClear('${k}')">×</button></div>`).join('')}</div>
+  <div class="card" style="margin-top:12px"><b>${t('sTexts')}</b><p class="muted">${t('sBlank')}</p>
+   ${SITE_FIELDS.map(([k,lb])=>`<div class="two"><div><label>${t(lb)} (ar)</label>${long(k)?`<textarea id="s_${k}_ar">${esc(tx('ar',k))}</textarea>`:`<input id="s_${k}_ar" value="${esc(tx('ar',k))}">`}</div><div><label>${t(lb)} (fr)</label>${long(k)?`<textarea id="s_${k}_fr">${esc(tx('fr',k))}</textarea>`:`<input id="s_${k}_fr" value="${esc(tx('fr',k))}">`}</div></div>`).join('')}</div>
+  <div class="card" style="margin-top:12px"><b>${t('sContact')}</b>
+   <div class="two"><div><label>${t('sPhone')}</label><input id="s_ph" dir="ltr" placeholder="0555 00 00 00" value="${esc(c.phone)}"></div><div><label>${t('sWa')}</label><input id="s_wa" dir="ltr" placeholder="0555 00 00 00" value="${esc(c.whatsapp)}"></div></div>
+   <div class="two"><div><label>Facebook (URL)</label><input id="s_fb" dir="ltr" placeholder="https://" value="${esc(c.facebook)}"></div><div><label>Instagram (URL)</label><input id="s_ig" dir="ltr" placeholder="https://" value="${esc(c.instagram)}"></div></div>
+   <div class="two"><div><label>TikTok (URL)</label><input id="s_tt" dir="ltr" placeholder="https://" value="${esc(c.tiktok)}"></div><div><label>YouTube (URL)</label><input id="s_yt" dir="ltr" placeholder="https://" value="${esc(c.youtube)}"></div></div></div>
+  <div class="card" style="margin-top:12px"><b>${t('sDev')}</b><div class="two"><div><label>${t('sDevName')}</label><input id="s_dn" value="${esc(d.name)}"></div><div><label>${t('sDevUrl')}</label><input id="s_du" dir="ltr" placeholder="https://" value="${esc(d.url)}"></div></div></div>
+  <p style="margin-top:16px"><button class="btn pri" id="s_save" onclick="saveSite()">${t('save')}</button></p>`}
+function sitePrev(inp,k){const f=inp.files[0];if(!f)return;EDIT.files[k]=f;const i=$('#si_'+k);i.src=URL.createObjectURL(f);i.style.display=''}
+function siteClear(k){EDIT.site[k]=null;delete EDIT.files[k];const i=$('#si_'+k);i.removeAttribute('src');i.style.display='none'}
+async function saveSite(){
+  const v=i=>$('#'+i).value.trim(),okUrl=u=>!u||/^https?:\/\//i.test(u);
+  const value={name:v('s_name'),logo:EDIT.site.logo,hero:EDIT.site.hero,about_img:EDIT.site.about_img,t:{ar:{},fr:{}},
+    contact:{phone:v('s_ph'),whatsapp:v('s_wa'),facebook:v('s_fb'),instagram:v('s_ig'),tiktok:v('s_tt'),youtube:v('s_yt')},dev:{name:v('s_dn'),url:v('s_du')}};
+  if(![value.contact.facebook,value.contact.instagram,value.contact.tiktok,value.contact.youtube,value.dev.url].every(okUrl))return toast(t('sUrlBad'),true);
+  SITE_FIELDS.forEach(([k])=>['ar','fr'].forEach(l=>{const x=v(`s_${k}_${l}`);if(x)value.t[l][k]=x}));
+  const btn=$('#s_save');btn.disabled=true;const up=[];
+  try{
+    for(const [k] of SITE_IMG){const f=EDIT.files[k];if(!f)continue;const blob=await shrink(f);const path=`site/${crypto.randomUUID()}.webp`;
+      const e=(await sb.storage.from('product-images').upload(path,blob,{contentType:'image/webp'})).error;if(e)throw e;up.push(path);value[k]=path}
+    const r=await sb.from('store_settings').upsert({key:'site',value},{onConflict:'key'});if(r.error)throw r.error;
+    const gone=SITE_IMG.map(([k])=>EDIT.orig[k]).filter((p,i)=>p&&p!==value[SITE_IMG[i][0]]);
+    if(gone.length)await sb.storage.from('product-images').remove(gone);
+    toast(t('saved'));vSite()
+  }catch(e){if(up.length)await sb.storage.from('product-images').remove(up);fail(e);btn.disabled=false}}
 
 
 boot();

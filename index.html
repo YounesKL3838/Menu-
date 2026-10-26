@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Maison Trendy | تراندي مود</title>
+<title>Maison Noor | متجر أزياء رجالية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/store.css">
@@ -15,7 +15,7 @@
 <span class="sp"></span>
 <label class="search hide-s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="qin" type="search" data-ip="search" aria-label="search"></label>
 <button class="lang" id="lang" type="button"></button>
-<button class="ib" type="button" id="cart" aria-label="cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 12H6zM9 8a3 3 0 0 1 6 0"/></svg><span class="badge cnt" id="count">0</span></button>
+
 </div></header>
 
 <main id="top" class="wrap">
@@ -23,27 +23,26 @@
 <div class="hero">
 <div><h1 data-i="h1"></h1><p data-i="sub"></p>
 <div class="btns"><a class="btn pri" href="#best" data-i="shop"></a><a class="btn sec" href="#new" data-i="explore"></a></div></div>
-<div class="stage" aria-hidden="true"><svg viewBox="0 0 120 140" fill="none"><path d="M38 14 60 22 82 14 106 34 96 60 86 54V126H34V54L24 60 14 34Z" fill="#1C1C1C"/><path d="M60 22 46 50 60 126 74 50Z" fill="#FAFAFA"/><path d="M60 22 52 14M60 22 68 14" stroke="#DCDCDC" stroke-width="3"/><circle cx="60" cy="70" r="2.2" fill="#555555"/><circle cx="60" cy="88" r="2.2" fill="#555555"/></svg></div>
+<div class="stage" id="heroStage" aria-hidden="true"><svg viewBox="0 0 120 140" fill="none"><path d="M38 14 60 22 82 14 106 34 96 60 86 54V126H34V54L24 60 14 34Z" fill="#1C1C1C"/><path d="M60 22 46 50 60 126 74 50Z" fill="#FAFAFA"/><path d="M60 22 52 14M60 22 68 14" stroke="#DCDCDC" stroke-width="3"/><circle cx="60" cy="70" r="2.2" fill="#555555"/><circle cx="60" cy="88" r="2.2" fill="#555555"/></svg></div>
 </div>
 
-<section id="res" hidden><div class="head"><h2 id="resT"></h2><button class="btn sec sm" type="button" id="clr" data-i="clear"></button></div><div class="grid" id="g3"></div></section>
 <section id="new"><div class="head"><h2 data-i="newT"></h2><a href="#" data-i="all"></a></div><div class="grid" id="g1"></div></section>
 <section id="looks" hidden><div class="head"><h2 data-i="looksT"></h2></div><div id="lk"></div></section>
 <section id="cats"><h2 data-i="catT"></h2><div class="cats" id="cg"></div></section>
+<section id="res" hidden><div class="head"><h2 id="resT"></h2><button class="btn sec sm" type="button" id="clr" data-i="clear"></button></div><div class="grid" id="g3"></div></section>
 <section id="best"><div class="head"><h2 data-i="bestT"></h2><a href="#" data-i="all"></a></div><div class="grid" id="g2"></div></section>
 <section><div class="banner"><h2 data-i="banT"></h2><p data-i="banP"></p><a class="btn" href="#new" data-i="banB"></a></div></section>
-<section id="about"><div class="about"><div><h2 data-i="abT"></h2><p data-i="abP"></p></div><div class="stage" style="aspect-ratio:5/4" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none"><path d="M30 20h60l8 30-14 6v52H36V56l-14-6Z" fill="#555555"/><path d="M52 20c2 8 14 8 16 0" stroke="#FAFAFA" stroke-width="3"/></svg></div></div></section>
+<section id="about"><div class="about"><div><h2 data-i="abT"></h2><p data-i="abP"></p></div><div class="stage" id="aboutStage" style="aspect-ratio:5/4" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none"><path d="M30 20h60l8 30-14 6v52H36V56l-14-6Z" fill="#555555"/><path d="M52 20c2 8 14 8 16 0" stroke="#FAFAFA" stroke-width="3"/></svg></div></div></section>
 <section><h2 data-i="qT"></h2><div class="quotes" id="qs"></div></section>
-<section><div class="news"><h2 data-i="nlT"></h2><p data-i="nlP" style="margin:0"></p>
-<form id="nl"><input type="email" required data-ip="email" aria-label="email"><button class="btn pri" data-i="sub2"></button></form></div></section>
+<section id="cs" hidden><div class="cbox"><h2 data-i="contactT"></h2><p data-i="contactP" style="margin:0 0 16px;opacity:.8"></p><div id="csb"></div></div></section>
 </main>
 
 <footer><div class="wrap"><div class="fcols">
 <div><div class="logo">Maison Noor</div><p data-i="fAbout" style="opacity:.7;max-width:34ch"></p></div>
 <div><h4 data-i="fShop"></h4><a href="#new" data-i="nNew"></a><a href="#best" data-i="nBest"></a><a href="#cats" data-i="nCats"></a></div>
 <div><h4 data-i="fHelp"></h4><a href="#" data-i="fShip"></a><a href="#" data-i="fRet"></a><a href="#" data-i="fFaq"></a></div>
-<div><h4 data-i="fContact"></h4><a href="#">contact@maisonnoor.example</a><a href="#">Instagram</a><a href="#">Facebook</a></div>
-</div><div class="copy">© 2026 Maison Noor</div></div></footer>
+<div><h4 data-i="fContact"></h4><div id="contact"></div></div>
+</div><div class="copy" id="copy"></div></div></footer>
 
 <nav class="bottom" aria-label="menu">
 <a href="#top"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11 12 4l8 7v9H4z"/></svg><span data-i="bHome"></span></a>

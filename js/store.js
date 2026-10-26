@@ -1,7 +1,7 @@
 /* Maison Noor storefront, connected to Supabase (see js/config.js) */
 var T={
 ar:{h1:"أناقتك تبدأ من هنا",sub:"قطع رجالية مفصّلة بعناية من أقمشة مختارة، بتصاميم هادئة تدوم موسمًا بعد موسم.",shop:"تسوّق الآن",explore:"استكشف المجموعة الجديدة",nNew:"وصل حديثًا",nCats:"التصنيفات",nBest:"الأكثر مبيعًا",nAbout:"من نحن",search:"ابحث عن قطعة…",newT:"وصل حديثًا",all:"عرض الكل",catT:"تسوّق حسب التصنيف",bestT:"الأكثر مبيعًا",banT:"مجموعة الخريف والشتاء",banP:"معاطف وبدلات وقمصان بألوان ترابية دافئة، متوفرة الآن.",banB:"اكتشف المجموعة",abT:"عن العلامة",abP:"بدأنا من فكرة بسيطة: ملابس رجالية متقنة الخياطة، بقصّات واضحة وألوان هادئة، تُلبس كل يوم وتبقى أنيقة.",qT:"آراء العملاء",nlT:"اشترك في نشرتنا",nlP:"كن أول من يعرف بالمجموعات الجديدة والعروض.",sub2:"اشتراك",email:"بريدك الإلكتروني",fAbout:"أزياء رجالية فاخرة بتفاصيل هادئة.",fShop:"المتجر",fHelp:"المساعدة",fShip:"الشحن",fRet:"الاستبدال والإرجاع",fFaq:"الأسئلة الشائعة",fContact:"تواصل معنا",bHome:"الرئيسية",bSearch:"بحث",bFav:"المفضلة",
-cur:"د.ج",lang:"Français",clear:"إلغاء التصفية",nLooks:"إطلالات",tLook:"إطلالة",choose:"اختر المقاس واللون",back:"رجوع",looksT:"إطلالات كاملة",lookTotal:"مجموع القطع",viewItems:"القطع في هذه الإطلالة",
+cur:"د.ج",lang:"Français",clear:"إلغاء التصفية",nLooks:"إطلالات",contactT:"تواصل معنا",contactP:"يسعدنا خدمتك، تواصل معنا بالطريقة الأنسب لك.",devBy:"تطوير:",tLook:"إطلالة",choose:"اختر المقاس واللون",back:"رجوع",looksT:"إطلالات كاملة",lookTotal:"مجموع القطع",viewItems:"القطع في هذه الإطلالة",
 tNew:"جديد",tBest:"الأكثر مبيعًا",soldOut:"نفد",results:"نتائج البحث",favT:"المفضلة",allT:"كل المنتجات",
 noData:"لا توجد منتجات منشورة بعد.",noConf:"لم يتم ربط Supabase بعد: عدّل الملف js/config.js.",loadErr:"تعذّر تحميل البيانات، حاول مرة أخرى.",
 color:"اللون",size:"المقاس",qty:"الكمية",inStock:"متوفر:",pick:"اختر اللون والمقاس",addCart:"أضف إلى السلة",added:"أُضيف إلى السلة",
@@ -12,7 +12,7 @@ eStock:"إحدى القطع لم تعد متوفرة بالكمية المطلو
 subbed:"تم الاشتراك بنجاح",rem:"حذف",
 q:[["جودة الخياطة تفوق توقعاتي، والمقاس مضبوط تمامًا.","كريم، المدية"],["وصلني الطلب في أيام قليلة والتغليف أنيق.","يوسف، الجزائر"],["ألوان هادئة وقماش مريح، سأطلب مجددًا.","أمين، وهران"]]},
 fr:{h1:"Votre élégance commence ici",sub:"Des pièces masculines coupées avec soin dans des matières choisies, aux lignes sobres qui durent saison après saison.",shop:"Acheter maintenant",explore:"Découvrir la nouvelle collection",nNew:"Nouveautés",nCats:"Catégories",nBest:"Meilleures ventes",nAbout:"À propos",search:"Rechercher une pièce…",newT:"Nouveautés",all:"Tout voir",catT:"Acheter par catégorie",bestT:"Meilleures ventes",banT:"Collection automne-hiver",banP:"Manteaux, costumes et chemises dans des tons terre chaleureux, disponibles dès maintenant.",banB:"Découvrir la collection",abT:"La marque",abP:"Tout est parti d’une idée simple : des vêtements masculins bien coupés, aux lignes nettes et aux couleurs calmes, à porter chaque jour avec élégance.",qT:"Avis clients",nlT:"Abonnez-vous à la newsletter",nlP:"Soyez les premiers informés des nouvelles collections et des offres.",sub2:"S’abonner",email:"Votre adresse e-mail",fAbout:"Mode masculine haut de gamme, aux détails sobres.",fShop:"Boutique",fHelp:"Aide",fShip:"Livraison",fRet:"Échanges et retours",fFaq:"Questions fréquentes",fContact:"Contact",bHome:"Accueil",bSearch:"Recherche",bFav:"Favoris",
-cur:"DA",lang:"العربية",clear:"Effacer le filtre",nLooks:"Looks",tLook:"Look",choose:"Choisir taille et couleur",back:"Retour",looksT:"Looks complets",lookTotal:"Total des pièces",viewItems:"Les pièces de ce look",
+cur:"DA",lang:"العربية",clear:"Effacer le filtre",nLooks:"Looks",contactT:"Contactez-nous",contactP:"Nous sommes là pour vous répondre, choisissez le moyen qui vous convient.",devBy:"Développé par",tLook:"Look",choose:"Choisir taille et couleur",back:"Retour",looksT:"Looks complets",lookTotal:"Total des pièces",viewItems:"Les pièces de ce look",
 tNew:"Nouveau",tBest:"Meilleure vente",soldOut:"Épuisé",results:"Résultats de recherche",favT:"Favoris",allT:"Tous les produits",
 noData:"Aucun produit publié pour l’instant.",noConf:"Supabase n’est pas encore connecté : modifiez le fichier js/config.js.",loadErr:"Impossible de charger les données, réessayez.",
 color:"Couleur",size:"Taille",qty:"Quantité",inStock:"En stock :",pick:"Choisissez la couleur et la taille",addCart:"Ajouter au panier",added:"Ajouté au panier",
@@ -35,7 +35,8 @@ if(typeof supabase!=="undefined"&&typeof SUPABASE_URL!=="undefined"&&SUPABASE_UR
 var lang=load("lang","ar"),PRODS=[],CATS=[],LOOKS=[],FEES={"default":0},dstate="loading";
 var st={cat:null,q:"",fav:false,all:false},favs=load("favs",{}),cart=load("cart",[]);
 
-function t(k){return T[lang][k]}
+var SITE={};
+function t(k){var o=SITE.t&&SITE.t[lang]&&SITE.t[lang][k];return o||T[lang][k]}
 function nm(a,l){var x=(a||[]).filter(function(r){return r.lang===l})[0];return x?x.name:""}
 function pname(p){return nm(p.product_translations,lang)||nm(p.product_translations,"ar")||p.sku}
 function pdesc(p){var x=(p.product_translations||[]).filter(function(r){return r.lang===lang})[0]||(p.product_translations||[])[0]||{};return x.description||x.short_description||""}
@@ -46,7 +47,7 @@ function cur(p){return p.sale_price!=null?Number(p.sale_price):Number(p.price)}
 function stock(p){return(p.product_variants||[]).reduce(function(a,v){return a+v.stock},0)}
 function toast(m){var e=$("#toast");e.textContent=m;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("on")},2000)}
 function cartCount(){return cart.reduce(function(a,i){return a+i.q},0)}
-function setBadge(bump){var fc=$("#fcart");if(fc){fc.classList.toggle("full",cartCount()>0);if(bump){fc.classList.remove("pop");void fc.offsetWidth;fc.classList.add("pop")}}document.querySelectorAll(".cnt").forEach(function(e){e.textContent=cartCount()});var c=$("#count");if(bump){var cb=$("#cart");cb.classList.remove("wig");void cb.offsetWidth;cb.classList.add("wig")}c.textContent=cartCount();if(bump){c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump")}}
+function setBadge(bump){var n=cartCount(),fc=$("#fcart");if(fc){fc.classList.toggle("full",n>0);if(bump){fc.classList.remove("pop");void fc.offsetWidth;fc.classList.add("pop")}}document.querySelectorAll(".cnt").forEach(function(e){e.textContent=n})}
 
 /* ---------- data ---------- */
 async function loadData(){
@@ -55,10 +56,10 @@ async function loadData(){
     var r=await Promise.all([
       sb.from("categories").select("id,parent_id,slug,image_path,sort_order,category_translations(lang,name)").order("sort_order"),
       sb.from("products").select("id,sku,price,sale_price,is_new,is_featured,is_bestseller,category_id,subcategory_id,product_translations(lang,name,short_description,description),product_images(path,is_primary,sort_order),product_variants(id,size,color,stock)").order("created_at",{ascending:false}),
-      sb.from("store_settings").select("key,value").eq("key","shipping_fees")]);
+      sb.from("store_settings").select("key,value").in("key",["shipping_fees","site"])]);
     if(r[0].error)throw r[0].error;if(r[1].error)throw r[1].error;
     CATS=r[0].data||[];PRODS=r[1].data||[];
-    if(r[2].data&&r[2].data[0])FEES=r[2].data[0].value;
+    (r[2].data||[]).forEach(function(row){if(row.key==="shipping_fees")FEES=row.value;if(row.key==="site")SITE=row.value||{}});
     try{var lr=await sb.from("outfits").select("id,slug,image_path,sort_order,outfit_translations(lang,title,description),outfit_items(product_id,sort_order),outfit_images(path,is_primary,sort_order)").eq("status","published").order("sort_order");LOOKS=lr.error?[]:(lr.data||[])}catch(e2){LOOKS=[]}
     dstate="ok"
   }catch(e){console.error(e);dstate="error"}
@@ -70,7 +71,7 @@ function card(p){
   return '<article class="card" data-p="'+p.id+'"><div class="ph" style="background:var(--beige)">'+(im?'<img class="pimg" loading="lazy" alt="" src="'+esc(url(im.path))+'">':"")+
   (tag?'<span class="tag">'+tag+"</span>":"")+(out?'<span class="sold">'+t("soldOut")+"</span>":"")+
   '<button class="fav" type="button" aria-pressed="'+!!favs[p.id]+'" data-f="'+p.id+'" aria-label="fav"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z"/></svg></button></div>'+
-  '<div class="info"><h3>'+esc(pname(p))+'</h3><div class="price">'+fmt(cur(p))+(p.sale_price!=null?"<s>"+fmt(p.price)+"</s>":"")+"</div></div></article>"
+  '<div class="info"><h3>'+esc(pname(p))+'</h3><div class="prow"><div class="price">'+fmt(cur(p))+(p.sale_price!=null?"<s>"+fmt(p.price)+"</s>":"")+"</div>"+(out?"":'<button class="qadd" type="button" data-add="'+p.id+'" aria-label="+">+</button>')+"</div></div></article>"
 }
 function lookData(){
   return dstate!=="ok"?[]:LOOKS.map(function(l){
@@ -129,7 +130,7 @@ function renderDataInner(){
   $("#cats").hidden=!top.length&&dstate==="ok";
   $("#cg").innerHTML=top.map(function(c){
     var n=esc(nm(c.category_translations,lang)||nm(c.category_translations,"ar")||c.slug);
-    return '<a class="cat'+(c.image_path&&sb?" has-img":"")+(st.cat===c.id?" on":"")+'" href="#res" data-c="'+c.id+'"'+(c.image_path&&sb?' style="background-image:url('+esc(url(c.image_path))+')"':"")+"><span>"+n+"</span></a>"}).join("");
+    return '<button type="button" class="cat'+(st.cat===c.id?" on":"")+'" data-c="'+c.id+'">'+n+"</button>"}).join("");
   if(dstate==="loading"){$("#g1").innerHTML=new Array(5).join('<div class="card sk"><div class="ph"></div><div class="info"><i></i><i></i></div></div>');$("#g3").innerHTML="";return}
   if(dstate!=="ok"){var m=msg(dstate==="noconf"?"noConf":dstate==="error"?"loadErr":"noData");$("#g1").innerHTML=m;$("#g3").innerHTML=m;$("#best").hidden=true;return}
   if(active){
@@ -152,17 +153,53 @@ function render(){
   $("#lang").textContent=t("lang");
   splitH1();
   $("#qs").innerHTML=t("q").map(function(q){return '<div class="q"><p>«'+q[0]+"»</p><b>"+q[1]+"</b></div>"}).join("");
-  document.title="Maison Noor | "+(lang==="ar"?"متجر أزياء رجالية":"Mode masculine");
-  setBadge();renderData()
+  setBadge();renderData();applySite()
+}
+
+/* ---------- owner-managed content (logo, images, contact, copyright) ---------- */
+function ico(inner){return'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+inner+"</svg>"}
+var ICONS={
+ facebook:ico('<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>'),
+ instagram:ico('<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>'),
+ tiktok:ico('<path d="M21 7.917v4.034a9.948 9.948 0 0 1-5-1.951v4.5a6.5 6.5 0 1 1-8-6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z"/>'),
+ youtube:ico('<path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>'),
+ whatsapp:ico('<path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/>'),
+ phone:ico('<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>')};
+function okUrl(u){return/^https?:\/\//i.test(u||"")}
+function contactHtml(){
+  var c=SITE.contact||{},out="",soc="";
+  [["facebook","Facebook"],["instagram","Instagram"],["tiktok","TikTok"],["youtube","YouTube"]].forEach(function(x){if(okUrl(c[x[0]]))soc+='<a class="soc-b" href="'+esc(c[x[0]])+'" target="_blank" rel="noopener" aria-label="'+x[1]+'">'+ICONS[x[0]]+"</a>"});
+  var wa=String(c.whatsapp||"").replace(/\D/g,"");if(wa){if(wa.charAt(0)==="0")wa="213"+wa.slice(1);soc='<a class="soc-b" href="https://wa.me/'+wa+'" target="_blank" rel="noopener" aria-label="WhatsApp">'+ICONS.whatsapp+"</a>"+soc}
+  var ph=String(c.phone||"").trim();
+  if(ph)out+='<a class="phone-b" href="tel:'+esc(ph.replace(/[^\d+]/g,""))+'" dir="ltr">'+ICONS.phone+"<span>"+esc(ph)+"</span></a>";
+  if(soc)out+='<div class="soc">'+soc+"</div>";
+  return out
+}
+function applySite(){
+  var name=SITE.name||"Maison Noor";
+  var hl=document.querySelector("header .logo");if(hl)hl.textContent=t("hTitle")||name;
+  var fl=document.querySelector("footer .logo");if(fl)fl.innerHTML=(SITE.logo&&sb)?'<img class="logo-img" alt="'+esc(name)+'" src="'+esc(url(SITE.logo))+'">':esc(name);
+  var hs=$("#heroStage");if(hs&&SITE.hero&&sb){hs.innerHTML='<img class="stage-img" alt="" src="'+esc(url(SITE.hero))+'">';hs.parentNode.classList.add("has-img")}
+  var ab=$("#aboutStage");if(ab&&SITE.about_img&&sb)ab.innerHTML='<img class="stage-img" alt="" src="'+esc(url(SITE.about_img))+'">';
+  var cp=$("#copy");
+  if(cp){var d=SITE.dev||{},txt=t("copy")||("© "+new Date().getFullYear()+" "+name);
+    cp.innerHTML=esc(txt)+(d.name?" · "+t("devBy")+" "+(okUrl(d.url)?'<a href="'+esc(d.url)+'" target="_blank" rel="noopener">'+esc(d.name)+"</a>":esc(d.name)):"")}
+  var h=contactHtml(),ct=$("#contact"),cs=$("#cs");
+  if(ct)ct.innerHTML=h;if(cs){cs.hidden=!h;$("#csb").innerHTML=h}
+  document.title=name+" | "+(lang==="ar"?"متجر أزياء رجالية":"Mode masculine")
 }
 
 /* ---------- product sheet ---------- */
 var SEL=null;
 function sheet(html,kind){
   kind=kind||(SEL?"product":"cart");var n=cartCount();
+  lockPage();
   $("#modal").innerHTML='<div class="overlay" id="ov"><div class="sheet" role="dialog" aria-modal="true"><div class="sh-bar"><span class="sh-l">'+(FROM&&kind!=="look"?backBtn():"")+'</span><span class="sh-r">'+(kind!=="cart"?'<button class="cbtn'+(n?" full":"")+'" type="button" id="sc" aria-label="cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 12H6zM9 8a3 3 0 0 1 6 0"/></svg><span class="badge cnt">'+n+"</span></button>":"")+'<button class="xbtn" type="button" id="xb" aria-label="close">×</button></span></div><div class="sh-sp"></div>'+html+"</div></div>"
 }
-function closeSheet(){$("#modal").innerHTML="";SEL=null;FROM=null;clearInterval(GT)}
+var LOCKED=false,LY=0;
+function lockPage(){if(LOCKED)return;LOCKED=true;LY=window.scrollY;var b=document.body;b.style.position="fixed";b.style.top="-"+LY+"px";b.style.left="0";b.style.right="0";b.style.width="100%"}
+function unlockPage(){if(!LOCKED)return;LOCKED=false;var b=document.body,h=document.documentElement;b.style.position="";b.style.top="";b.style.left="";b.style.right="";b.style.width="";h.style.scrollBehavior="auto";window.scrollTo(0,LY);h.style.scrollBehavior="";lastY=LY}
+function closeSheet(){$("#modal").innerHTML="";SEL=null;FROM=null;clearInterval(GT);unlockPage()}
 function openProduct(id){
   var p=PRODS.filter(function(x){return x.id===id})[0];if(!p)return;
   var vs=p.product_variants||[],first=vs.filter(function(v){return v.stock>0})[0]||vs[0]||{};
@@ -183,12 +220,20 @@ function optsRender(){
    '<div class="lbl">'+t("qty")+'</div><div class="qty"><button type="button" data-q="-1" aria-label="-">−</button><b>'+SEL.qty+'</b><button type="button" data-q="1" aria-label="+">+</button></div>'+
    '<p><button class="btn pri" type="button" id="addc" style="width:100%"'+(ok?"":" disabled")+">"+t("addCart")+"</button></p>"
 }
+function cartAdd(p,v,q){
+  var im=imgs(p)[0],it=cart.filter(function(i){return i.v===v.id})[0];
+  if(it){it.q=Math.min(v.stock,it.q+q)}
+  else cart.push({v:v.id,p:p.id,q:Math.min(v.stock,q),size:v.size,color:v.color,price:cur(p),name_ar:nm(p.product_translations,"ar")||p.sku,name_fr:nm(p.product_translations,"fr")||p.sku,img:im?im.path:null,max:v.stock});
+  save("cart",cart);setBadge(true);toast(t("added"))
+}
 function addToCart(){
   var p=SEL.p,v=(p.product_variants||[]).filter(function(x){return x.color===SEL.color&&x.size===SEL.size})[0];if(!v||v.stock<1)return;
-  var im=imgs(p)[0],it=cart.filter(function(i){return i.v===v.id})[0];
-  if(it){it.q=Math.min(v.stock,it.q+SEL.qty)}
-  else cart.push({v:v.id,p:p.id,q:Math.min(v.stock,SEL.qty),size:v.size,color:v.color,price:cur(p),name_ar:nm(p.product_translations,"ar")||p.sku,name_fr:nm(p.product_translations,"fr")||p.sku,img:im?im.path:null,max:v.stock});
-  save("cart",cart);setBadge(true);toast(t("added"));if(FROM)openLook(FROM);else closeSheet()
+  cartAdd(p,v,SEL.qty);if(FROM)openLook(FROM);else closeSheet()
+}
+function quickAdd(id){
+  var p=PRODS.filter(function(x){return x.id===id})[0];if(!p)return;
+  var vs=(p.product_variants||[]).filter(function(v){return v.stock>0});
+  if(vs.length===1)cartAdd(p,vs[0],1);else openProduct(id)
 }
 
 /* ---------- cart + checkout ---------- */
@@ -230,7 +275,8 @@ async function placeOrder(e){
 document.addEventListener("click",function(e){
   var el=e.target;
   var f=el.closest("[data-f]");if(f){e.stopPropagation();favs[f.dataset.f]=!favs[f.dataset.f];if(!favs[f.dataset.f])delete favs[f.dataset.f];save("favs",favs);f.setAttribute("aria-pressed",!!favs[f.dataset.f]);if(st.fav)renderData();return}
-  var c=el.closest("[data-c]");if(c){e.preventDefault();st.cat=st.cat===c.dataset.c?null:c.dataset.c;st.fav=false;st.all=false;renderData();var r=$("#res");if(!r.hidden)r.scrollIntoView({behavior:"smooth"});return}
+  var ad=el.closest("[data-add]");if(ad){e.stopPropagation();quickAdd(ad.dataset.add);return}
+  var c=el.closest("[data-c]");if(c){e.preventDefault();st.cat=st.cat===c.dataset.c?null:c.dataset.c;st.fav=false;st.all=false;renderData();if(st.cat)$("#cats").scrollIntoView({behavior:"smooth"});return}
   var bk=el.closest("[data-back]");if(bk){openLook(bk.dataset.back);return}
   var lc=el.closest("[data-l]");if(lc){openLook(lc.dataset.l);return}
   var pc=el.closest("[data-p]");if(pc){openProduct(pc.dataset.p);return}
@@ -250,10 +296,9 @@ $("#clr").onclick=function(){st={cat:null,q:"",fav:false,all:false};document.que
 var qt;document.querySelectorAll(".qin").forEach(function(i){i.addEventListener("input",function(){var v=i.value;document.querySelectorAll(".qin").forEach(function(o){if(o!==i)o.value=v});clearTimeout(qt);qt=setTimeout(function(){st.q=v.trim();renderData()},250)})});
 $("#bs").onclick=function(e){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});var i=document.querySelector(".msearch .qin");if(i)i.focus()};
 $("#bf").onclick=function(e){e.preventDefault();st.fav=!st.fav;st.cat=null;renderData();if(st.fav)$("#res").scrollIntoView({behavior:"smooth"})};
-$("#cart").onclick=openCart;
 $("#fcart").onclick=openCart;
 $("#lang").onclick=function(){lang=lang==="ar"?"fr":"ar";save("lang",lang);render();if(SEL)closeSheet()};
-$("#nl").onsubmit=async function(e){e.preventDefault();var em=e.target.querySelector("input").value.trim();
+var nlf=$("#nl");if(nlf)nlf.onsubmit=async function(e){e.preventDefault();var em=e.target.querySelector("input").value.trim();
   if(sb){var r=await sb.from("newsletter_subscribers").insert({email:em,lang:lang});if(r.error&&r.error.code!=="23505"){toast(t("eGen"));return}}
   toast(t("subbed"));e.target.reset()};
 
@@ -266,8 +311,9 @@ function reveal(root){
   els.forEach(function(e){if(e.classList.contains("rv"))return;e.classList.add("rv");var i=Array.prototype.indexOf.call(e.parentNode.children,e);e.style.setProperty("--d",Math.min(i,5)*70+"ms");io.observe(e)})
 }
 var hd=document.querySelector("header"),bar=document.createElement("div");bar.id="bar";document.body.appendChild(bar);
-function onScroll(){var y=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;hd.classList.toggle("scrolled",y>8);bar.style.transform="scaleX("+(h>0?Math.min(1,y/h):0)+")"}
+var lastY=0;
+function onScroll(){var y=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;hd.classList.toggle("scrolled",y>8);var ai=document.activeElement;if(!(ai&&ai.classList&&ai.classList.contains("qin"))){if(y>lastY+6&&y>90)hd.classList.add("hide");else if(y<lastY-6||y<=90)hd.classList.remove("hide")}lastY=y;bar.style.transform="scaleX("+(h>0?Math.min(1,y/h):0)+")"}
 window.addEventListener("scroll",onScroll,{passive:true});onScroll();
 
 render();
-loadData().then(function(){syncCart();renderData()});
+loadData().then(function(){syncCart();renderData();applySite()});

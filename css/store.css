@@ -241,3 +241,63 @@ nav.main a:hover::after{transform:scaleX(1)}
 .fcart.full::before,.cbtn.full::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--ink);animation:ring 2s ease-out infinite;pointer-events:none}
 .fcart.full svg,.cbtn.full svg{animation:shake 4.5s ease-in-out infinite}
 .fcart.pop{animation:pop .45s}
+
+/* ---- header hides on scroll down, returns on scroll up ---- */
+header{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+header.hide{transform:translateY(-100%)}
+.logo-img{display:block;height:34px;width:auto;max-width:150px;object-fit:contain}
+.stage-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.stage:has(.stage-img) svg{display:none}
+/* ---- quick add (+) on product cards ---- */
+.qadd{position:absolute;inset-inline-end:10px;bottom:10px;width:40px;height:40px;border-radius:50%;border:0;background:var(--ink);color:var(--ivory);font-size:24px;line-height:1;display:grid;place-items:center;cursor:pointer;z-index:2;box-shadow:0 6px 16px rgba(28,28,28,.3);transition:transform .2s,background .25s}
+.qadd:hover{background:var(--olive)}.qadd:active{transform:scale(.88)}
+.lkgrid .qadd{width:30px;height:30px;font-size:18px;inset-inline-end:6px;bottom:6px}
+/* ---- contact: phone + social buttons ---- */
+.cbox{background:var(--beige);border-radius:28px;padding:34px 22px;text-align:center}
+.cbox h2{margin:0 0 6px}
+.cbox #csb,#contact{display:flex;flex-direction:column;gap:12px;align-items:center}
+#contact{align-items:flex-start}
+.soc{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.soc-b{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--white);display:grid;place-items:center;transition:transform .25s cubic-bezier(.2,.7,.2,1),background .25s,color .25s}
+.soc-b:hover{background:var(--ink);color:var(--ivory);transform:translateY(-3px)}
+.phone-b{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:10px 20px;font-weight:600;font-family:'Inter',sans-serif;background:var(--white);transition:background .25s,color .25s}
+.phone-b:hover{background:var(--ink);color:var(--ivory)}
+.copy a{text-decoration:underline;text-underline-offset:3px}
+
+/* ---- categories as buttons (no images) ---- */
+.cats{display:flex;flex-wrap:wrap;gap:10px}
+.cat{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:999px;border:1px solid var(--ink);background:var(--white);color:var(--ink);font:inherit;font-weight:600;font-size:16px;cursor:pointer;transition:background .25s,color .25s,transform .3s cubic-bezier(.2,.7,.2,1)}
+.cat:hover{background:var(--ink);color:var(--ivory);transform:translateY(-2px)}
+.cat.on{background:var(--ink);color:var(--ivory);outline:0}
+
+/* ---- hero: image and text in one block ---- */
+.hero{position:relative;display:flex;align-items:flex-end;min-height:500px;margin-top:14px;padding:0;border-radius:28px;overflow:hidden;background:var(--beige)}
+.hero>div:first-child{position:relative;z-index:2;padding:30px 24px;max-width:620px}
+.hero .stage{position:absolute;inset:0;width:100%;max-height:none;aspect-ratio:auto;border-radius:0;place-items:center end;padding-inline-end:8%}
+.hero .stage::after{display:none}
+.hero:not(.has-img) .stage svg{width:38%;opacity:.18}
+.hero.has-img::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,.12) 70%)}
+.hero.has-img h1,.hero.has-img p{color:#fff}
+.hero.has-img p{opacity:.92}
+.hero.has-img .btn.pri{background:#fff;color:var(--ink);border-color:#fff}
+.hero.has-img .btn.pri:hover{background:var(--sand);border-color:var(--sand)}
+.hero.has-img .btn.sec{color:#fff;border-color:#fff}
+.hero.has-img .btn.sec:hover{background:rgba(255,255,255,.18)}
+@media (min-width:760px){
+ .hero{min-height:580px;align-items:center;padding:0}
+ .hero>div:first-child{padding:56px}
+ .hero:not(.has-img) .stage svg{width:34%;opacity:1}
+ .hero.has-img::after{background:linear-gradient(to right,rgba(0,0,0,.66),rgba(0,0,0,.08) 72%)}
+ [dir=rtl] .hero.has-img::after{background:linear-gradient(to left,rgba(0,0,0,.66),rgba(0,0,0,.08) 72%)}
+}
+/* ---- "+" sits beside the price, not on the image ---- */
+.prow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px}
+.qadd{position:static;width:34px;height:34px;flex:none;font-size:20px;box-shadow:none;inset:auto}
+.lkgrid .qadd{width:26px;height:26px;font-size:16px;inset:auto}
+/* ---- window scrolling never moves the page behind ---- */
+.sheet,.overlay{overscroll-behavior:contain}
+/* ---- footer icons: the footer link rule must not break them ---- */
+.fcols .soc-b{display:grid;opacity:1;padding:0}
+.fcols .phone-b{display:inline-flex;opacity:1;padding:10px 20px}
+#contact .soc{justify-content:flex-start}
+.soc-b svg,.phone-b svg{flex:none;display:block}
