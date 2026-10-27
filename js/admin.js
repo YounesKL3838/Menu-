@@ -44,6 +44,10 @@ Object.assign(T.ar,{imgHint:"تُقصّ الصور تلقائيًا من الو�
 Object.assign(T.fr,{imgHint:"Les images sont recadrées automatiquement au centre au format portrait Instagram 4:5 (jusqu’à 1440×1800), en haute qualité et poids réduit."});
 Object.assign(T.ar,{sHTitle:"عنوان الشريط العلوي (اتركه فارغًا لاسم المتجر)"});
 Object.assign(T.fr,{sHTitle:"Titre de la barre supérieure (vide = nom de la boutique)"});
+var WA="الشلف|الأغواط|أم البواقي|باتنة|بجاية|بسكرة|بشار|البليدة|البويرة|تمنراست|تبسة|تلمسان|تيارت|تيزي وزو|الجزائر|الجلفة|جيجل|سطيف|سعيدة|سكيكدة|سيدي بلعباس|عنابة|قالمة|قسنطينة|المدية|مستغانم|المسيلة|معسكر|ورقلة|وهران|البيض|إليزي|برج بوعريريج|بومرداس|الطارف|تندوف|تيسمسيلت|الوادي|خنشلة|سوق أهراس|تيبازة|ميلة|عين الدفلى|النعامة|عين تموشنت|غرداية|غليزان|تيميمون|برج باجي مختار|أولاد جلال|بني عباس|عين صالح|عين قزام|تقرت|جانت|المغير|المنيعة".split("|");WA.unshift("أدرار");
+var WF="Adrar|Chlef|Laghouat|Oum El Bouaghi|Batna|Béjaïa|Biskra|Béchar|Blida|Bouira|Tamanrasset|Tébessa|Tlemcen|Tiaret|Tizi Ouzou|Alger|Djelfa|Jijel|Sétif|Saïda|Skikda|Sidi Bel Abbès|Annaba|Guelma|Constantine|Médéa|Mostaganem|M’Sila|Mascara|Ouargla|Oran|El Bayadh|Illizi|Bordj Bou Arréridj|Boumerdès|El Tarf|Tindouf|Tissemsilt|El Oued|Khenchela|Souk Ahras|Tipaza|Mila|Aïn Defla|Naâma|Aïn Témouchent|Ghardaïa|Relizane|Timimoun|Bordj Badji Mokhtar|Ouled Djellal|Béni Abbès|In Salah|In Guezzam|Touggourt|Djanet|El M’Ghair|El Menia".split("|");
+Object.assign(T.ar,{discounts:"أكواد الخصم",banners:"البنرات",delivery:"التوصيل",dcCode:"الكود",dcKind:"النوع",dcPercent:"نسبة مئوية %",dcFixed:"مبلغ ثابت",dcValue:"القيمة",dcMin:"الحد الأدنى للطلب",dcMax:"أقصى عدد استخدامات (فارغ = بلا حد)",dcUsed:"مرات الاستخدام",dcFrom:"يبدأ",dcTo:"ينتهي",dcActive:"مفعّل",dcBad:"تحقق من الكود (3-30 حرفًا إنجليزيًا أو أرقامًا) والقيمة (النسبة حتى 100).",bnImg:"صورة البنر (يفضّل عريضة)",bnLink:"رابط عند الضغط (اختياري)",bnNeedImg:"أضف صورة للبنر.",dlDefault:"الأسعار الافتراضية (تُطبَّق على كل الولايات إن لم تضف ولايات)",dHome:"توصيل إلى المنزل",dOffice:"توصيل إلى المكتب",dlWilayas:"ولايات بأسعار خاصة",dlNote:"عند إضافة ولايات هنا تُقبل الطلبات من هذه الولايات فقط. اترك سعر نوع فارغًا لإلغاء ذلك النوع في تلك الولاية.",dlAdd:"أضف ولاية",dlAll:"أضف كل الولايات"});
+Object.assign(T.fr,{discounts:"Codes promo",banners:"Bannières",delivery:"Livraison",dcCode:"Code",dcKind:"Type",dcPercent:"Pourcentage %",dcFixed:"Montant fixe",dcValue:"Valeur",dcMin:"Commande minimum",dcMax:"Utilisations max (vide = illimité)",dcUsed:"Utilisations",dcFrom:"Début",dcTo:"Fin",dcActive:"Actif",dcBad:"Vérifiez le code (3-30 lettres A-Z ou chiffres) et la valeur (pourcentage max 100).",bnImg:"Image de la bannière (de préférence large)",bnLink:"Lien au clic (facultatif)",bnNeedImg:"Ajoutez une image à la bannière.",dlDefault:"Tarifs par défaut (appliqués à toutes les wilayas si vous n’en ajoutez aucune)",dHome:"Livraison à domicile",dOffice:"Livraison au bureau",dlWilayas:"Wilayas avec tarifs spécifiques",dlNote:"Dès que vous ajoutez des wilayas ici, seules ces wilayas sont desservies. Laissez un tarif vide pour désactiver ce mode dans la wilaya.",dlAdd:"Ajouter une wilaya",dlAll:"Ajouter toutes les wilayas"});
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let lang=(()=>{try{return localStorage.getItem('alang')||'ar'}catch(e){return 'ar'}})();
@@ -85,7 +89,7 @@ async function logout(){try{sessionStorage.removeItem('owner')}catch(e){}await s
 function shell(){$('#app').innerHTML=`<div class="top"><div class="row"><b class="sp" id="ttl" onclick="ownerTap()" style="user-select:none;cursor:default">${t('title')}</b>${langBtn()}<button class="btn sm" onclick="logout()">${t('logout')}</button></div>
  <div class="tabs">${tabsList().map(k=>`<button data-t="${k}" class="${k===tab?'on':''}" onclick="go('${k}')">${t(k)}</button>`).join('')}</div></div><main id="main"></main>`}
 async function go(k){tab=k;document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===k));$('#main').innerHTML='…';
-  try{await({dash:vDash,catalog:vCatalog,orders:vOrders,looks:vLooks,landings:vLandings,site:vSite}[k])()}catch(e){fail(e)}}
+  try{await({dash:vDash,catalog:vCatalog,orders:vOrders,looks:vLooks,landings:vLandings,discounts:vDiscounts,banners:vBanners,delivery:vDelivery,site:vSite}[k])()}catch(e){fail(e)}}
 function modal(h){$('#modal').innerHTML=`<div class="overlay" onclick="if(event.target===this)closeM()"><div class="sheet">${h}</div></div>`}
 function closeM(){$('#modal').innerHTML='';EDIT=null}
 
@@ -230,7 +234,7 @@ async function saveProduct(){
   }catch(e){fail(e);btn.disabled=false}}
 async function cleanFile(path){
   for(const tb of ['product_images','outfit_images']){const {count}=await sb.from(tb).select('id',{count:'exact',head:true}).eq('path',path);if(count)return}
-  for(const [tb,col] of [['categories','image_path'],['outfits','image_path']]){const {count}=await sb.from(tb).select('id',{count:'exact',head:true}).eq(col,path);if(count)return}
+  for(const [tb,col] of [['categories','image_path'],['outfits','image_path'],['banners','image_path']]){const {count}=await sb.from(tb).select('id',{count:'exact',head:true}).eq(col,path);if(count)return}
   await sb.storage.from('product-images').remove([path])}
 async function delProduct(id){if(!confirm(t('confirmDel')))return;
   const {data:im}=await sb.from('product_images').select('path').eq('product_id',id);
@@ -254,7 +258,7 @@ async function openOrder(id){
   modal(`<div class="row"><h3 class="sp">${esc(o.order_number)}</h3><button class="btn sm" onclick="closeM()">${t('close')}</button></div>
   <p><b>${t('customer')}:</b> ${esc(o.customer_name)}<br><b>${t('phone')}:</b> <span dir="ltr">${esc(o.customer_phone)}</span><br><b>${t('addr')}:</b> ${esc(o.wilaya)} ${esc(o.city||'')} — ${esc(o.address_line)}</p>
   <b>${t('items')}</b>${o.order_items.map(i=>`<p class="muted">${esc(lang==='ar'?i.name_ar:i.name_fr)} (${esc(i.size)}/${esc(i.color)}) × ${i.quantity} — ${money(i.unit_price*i.quantity)}</p>`).join('')}
-  <p><b>${t('total')}:</b> ${money(o.total)}</p>
+  <p><b>${t('delivery')}:</b> ${o.delivery_type==='office'?t('dOffice'):t('dHome')} · ${money(o.shipping_fee)}<br><b>${t('total')}:</b> ${money(o.total)}</p>
   <label>${t('status')}</label><select id="o_st">${STAT.map(s=>`<option value="${s}" ${s===o.status?'selected':''}>${t(s)}</option>`).join('')}</select>
   <label>${t('tracking')}</label><input id="o_tr" dir="ltr" value="${esc(o.tracking_number)}">
   <p><button class="btn pri" onclick="saveOrder('${o.id}')">${t('update')}</button></p>
@@ -396,7 +400,7 @@ async function delLanding(id){if(!confirm(t('confirmDel')))return;const {error}=
 
 /* ---------- site content (owner only, unlocked by tapping the title 5 times) ---------- */
 let _ot=[];
-function tabsList(){let o=false;try{o=sessionStorage.getItem('owner')==='1'}catch(e){}return ['dash','catalog','orders','looks','landings'].concat(o?['site']:[])}
+function tabsList(){let o=false;try{o=sessionStorage.getItem('owner')==='1'}catch(e){}return ['dash','catalog','orders','looks','landings','discounts','banners','delivery'].concat(o?['site']:[])}
 function ownerTap(){const n=Date.now();_ot=_ot.filter(x=>n-x<4000);_ot.push(n);if(_ot.length>=5){_ot=[];try{sessionStorage.setItem('owner','1')}catch(e){}shell();go('site')}}
 const SITE_FIELDS=[['hTitle','sHTitle'],['h1','sH1'],['sub','sSub'],['shop','sShop'],['explore','sExplore'],['banT','sBanT'],['banP','sBanP'],['banB','sBanB'],['abT','sAbT'],['abP','sAbP'],['fAbout','sFAbout'],['copy','sCopy']];
 const SITE_IMG=[['logo','sLogo'],['hero','sHero'],['about_img','sAboutImg']];
@@ -434,6 +438,101 @@ async function saveSite(){
     if(gone.length)await sb.storage.from('product-images').remove(gone);
     toast(t('saved'));vSite()
   }catch(e){if(up.length)await sb.storage.from('product-images').remove(up);fail(e);btn.disabled=false}}
+
+/* ---------- discount codes ---------- */
+const toLocalInput=iso=>{if(!iso)return'';const d=new Date(iso),p=n=>String(n).padStart(2,'0');return`${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`};
+async function vDiscounts(){
+  const {data,error}=await sb.from('discount_codes').select('*').order('code');if(error)throw error;
+  $('#main').innerHTML=`<div class="row"><span class="sp"></span><button class="btn pri" onclick="openDiscount()">+ ${t('add')}</button></div><div class="grid" style="margin-top:12px">${data.map(d=>`<div class="card"><div class="row"><b class="sp" dir="ltr">${esc(d.code)}</b><span class="pill ${d.is_active?'published':'archived'}">${d.is_active?t('dcActive'):'—'}</span></div>
+   <div>${d.kind==='percent'?Number(d.value)+'%':money(d.value)}</div><div class="muted">${t('dcUsed')}: ${d.used_count}${d.max_uses!=null?' / '+d.max_uses:''}</div>
+   ${Number(d.min_order)>0?`<div class="muted">${t('dcMin')}: ${money(d.min_order)}</div>`:''}${d.starts_at||d.ends_at?`<div class="muted">${d.starts_at?date(d.starts_at):'…'} — ${d.ends_at?date(d.ends_at):'…'}</div>`:''}
+   <div class="row" style="margin-top:10px"><button class="btn sm" onclick="openDiscount('${d.id}')">${t('edit')}</button><button class="btn sm red" onclick="delDiscount('${d.id}')">${t('del')}</button></div></div>`).join('')||`<p class="muted">${t('noList')}</p>`}</div>`}
+async function openDiscount(id){
+  let d={kind:'percent',min_order:0,is_active:true};
+  if(id){const {data,error}=await sb.from('discount_codes').select('*').eq('id',id).single();if(error)return fail(error);d=data}
+  EDIT={id:id||null};
+  modal(`<div class="row"><h3 class="sp">${id?t('edit'):t('add')}</h3><button class="btn sm" onclick="closeM()">${t('close')}</button></div>
+  <div class="two"><div><label>${t('dcCode')} *</label><input id="d_code" dir="ltr" value="${esc(d.code)}" placeholder="WELCOME10"></div><div><label>${t('dcKind')}</label><select id="d_kind"><option value="percent" ${d.kind==='percent'?'selected':''}>${t('dcPercent')}</option><option value="fixed" ${d.kind==='fixed'?'selected':''}>${t('dcFixed')}</option></select></div></div>
+  <div class="two"><div><label>${t('dcValue')} *</label><input id="d_val" type="number" min="0" step="1" inputmode="decimal" value="${d.value??''}"></div><div><label>${t('dcMin')}</label><input id="d_min" type="number" min="0" step="1" inputmode="decimal" value="${d.min_order??0}"></div></div>
+  <label>${t('dcMax')}</label><input id="d_max" type="number" min="1" step="1" inputmode="numeric" value="${d.max_uses??''}">
+  <div class="two"><div><label>${t('dcFrom')}</label><input id="d_from" type="datetime-local" value="${toLocalInput(d.starts_at)}"></div><div><label>${t('dcTo')}</label><input id="d_to" type="datetime-local" value="${toLocalInput(d.ends_at)}"></div></div>
+  <div class="chk"><label><input type="checkbox" id="d_on" ${d.is_active?'checked':''}>${t('dcActive')}</label></div>
+  <p style="margin-top:20px"><button class="btn pri" id="d_save" onclick="saveDiscount()">${t('save')}</button></p>`)}
+async function saveDiscount(){
+  const v=i=>$('#'+i).value.trim(),code=v('d_code').toUpperCase(),kind=v('d_kind'),val=num(v('d_val'));
+  if(!/^[A-Z0-9_-]{3,30}$/.test(code)||val==null||val<=0||(kind==='percent'&&val>100))return toast(t('dcBad'),true);
+  const row={code,kind,value:val,min_order:num(v('d_min'))||0,max_uses:num(v('d_max')),starts_at:v('d_from')?new Date(v('d_from')).toISOString():null,ends_at:v('d_to')?new Date(v('d_to')).toISOString():null,is_active:$('#d_on').checked};
+  const btn=$('#d_save');btn.disabled=true;
+  try{const r=EDIT.id?await sb.from('discount_codes').update(row).eq('id',EDIT.id):await sb.from('discount_codes').insert(row);if(r.error)throw r.error;toast(t('saved'));closeM();vDiscounts()}
+  catch(e){fail(e);btn.disabled=false}}
+async function delDiscount(id){if(!confirm(t('confirmDel')))return;const {error}=await sb.from('discount_codes').delete().eq('id',id);if(error)return fail(error);toast(t('deleted'));vDiscounts()}
+
+/* ---------- banners ---------- */
+async function vBanners(){
+  const {data,error}=await sb.from('banners').select('*').order('sort_order');if(error)throw error;
+  $('#main').innerHTML=`<div class="row"><span class="sp"></span><button class="btn pri" onclick="openBanner()">+ ${t('add')}</button></div><div class="grid" style="margin-top:12px">${data.map(b=>`<div class="card">${b.image_path?`<img src="${esc(pub(b.image_path))}" alt="" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;background:var(--beige)">`:''}
+   <h4 style="margin:8px 0 0">${esc((lang==='ar'?b.title_ar:b.title_fr)||b.title_ar||b.title_fr||'—')}</h4><div class="muted">#${b.sort_order}</div><span class="pill ${b.is_active?'published':'archived'}">${b.is_active?t('dcActive'):'—'}</span>
+   <div class="row" style="margin-top:10px"><button class="btn sm" onclick="openBanner('${b.id}')">${t('edit')}</button><button class="btn sm red" onclick="delBanner('${b.id}')">${t('del')}</button></div></div>`).join('')||`<p class="muted">${t('noList')}</p>`}</div>`}
+async function openBanner(id){
+  let b={sort_order:0,is_active:true};
+  if(id){const {data,error}=await sb.from('banners').select('*').eq('id',id).single();if(error)return fail(error);b=data}
+  EDIT={id:id||null,path:b.image_path||null};
+  modal(`<div class="row"><h3 class="sp">${id?t('edit'):t('add')}</h3><button class="btn sm" onclick="closeM()">${t('close')}</button></div>
+  <label>${t('bnImg')} *</label><img id="b_prev" style="width:100%;max-height:180px;object-fit:cover;border-radius:12px;margin-bottom:6px;${b.image_path?'':'display:none'}" src="${b.image_path?esc(pub(b.image_path)):''}" alt=""><input type="file" id="b_f" accept="image/*" onchange="bannerPrev(this)">
+  <div class="two"><div><label>${t('ttlAr')}</label><input id="b_ta" value="${esc(b.title_ar)}"></div><div><label>${t('ttlFr')}</label><input id="b_tf" value="${esc(b.title_fr)}"></div></div>
+  <div class="two"><div><label>${t('dsAr')}</label><textarea id="b_xa">${esc(b.text_ar)}</textarea></div><div><label>${t('dsFr')}</label><textarea id="b_xf">${esc(b.text_fr)}</textarea></div></div>
+  <label>${t('bnLink')}</label><input id="b_link" dir="ltr" placeholder="https://… ${'#best'}" value="${esc(b.link)}">
+  <div class="two"><div><label>${t('order')}</label><input id="b_so" type="number" value="${b.sort_order}"></div><div class="chk" style="align-items:end"><label><input type="checkbox" id="b_on" ${b.is_active?'checked':''}>${t('dcActive')}</label></div></div>
+  <p style="margin-top:20px"><button class="btn pri" id="b_save" onclick="saveBanner()">${t('save')}</button></p>`)}
+function bannerPrev(i){const f=i.files[0];if(!f)return;const p=$('#b_prev');p.src=URL.createObjectURL(f);p.style.display=''}
+async function saveBanner(){
+  const v=i=>$('#'+i).value.trim(),f=$('#b_f').files[0],link=v('b_link');
+  if(!EDIT.path&&!f)return toast(t('bnNeedImg'),true);
+  if(link&&!/^(https?:\/\/|#|\/)/i.test(link))return toast(t('sUrlBad'),true);
+  const btn=$('#b_save');btn.disabled=true;let up=null;
+  try{
+    let path=EDIT.path;
+    if(f){const blob=await shrink(f);up=`banners/${crypto.randomUUID()}.webp`;const e=(await sb.storage.from('product-images').upload(up,blob,{contentType:'image/webp'})).error;if(e)throw e;path=up}
+    const row={image_path:path,title_ar:v('b_ta')||null,title_fr:v('b_tf')||null,text_ar:v('b_xa')||null,text_fr:v('b_xf')||null,link:link||null,sort_order:parseInt(v('b_so'))||0,is_active:$('#b_on').checked};
+    const r=EDIT.id?await sb.from('banners').update(row).eq('id',EDIT.id):await sb.from('banners').insert(row);if(r.error)throw r.error;
+    if(up&&EDIT.path)await cleanFile(EDIT.path);
+    toast(t('saved'));closeM();vBanners()
+  }catch(e){if(up)await sb.storage.from('product-images').remove([up]);fail(e);btn.disabled=false}}
+async function delBanner(id){if(!confirm(t('confirmDel')))return;
+  const {data}=await sb.from('banners').select('image_path').eq('id',id).single();
+  const {error}=await sb.from('banners').delete().eq('id',id);if(error)return fail(error);
+  if(data&&data.image_path)await cleanFile(data.image_path);toast(t('deleted'));vBanners()}
+
+/* ---------- delivery: wilayas, home / office prices ---------- */
+const wname=n=>(lang==='ar'?WA:WF)[n-1]||n;
+async function vDelivery(){
+  const {data,error}=await sb.from('store_settings').select('value').eq('key','shipping').maybeSingle();if(error)throw error;
+  const c=data?data.value:{default:{home:600,office:400},wilayas:{}},d=c.default||{};
+  EDIT={def:{home:d.home??'',office:d.office??''},ws:JSON.parse(JSON.stringify(c.wilayas||{}))};
+  drawDelivery()}
+function collectDelivery(){
+  if(!$('#dl_h'))return;
+  EDIT.def={home:$('#dl_h').value.trim(),office:$('#dl_o').value.trim()};
+  document.querySelectorAll('.dr').forEach(r=>{EDIT.ws[r.dataset.w]={home:r.querySelector('.dh').value.trim(),office:r.querySelector('.do').value.trim()}})}
+function drawDelivery(){
+  const keys=Object.keys(EDIT.ws).map(Number).sort((a,b)=>a-b);
+  const free=[];for(let i=1;i<=58;i++)if(!EDIT.ws[i])free.push(i);
+  $('#main').innerHTML=`<div class="card"><b>${t('dlDefault')}</b><div class="two"><div><label>${t('dHome')}</label><input id="dl_h" type="number" min="0" inputmode="numeric" value="${EDIT.def.home}"></div><div><label>${t('dOffice')}</label><input id="dl_o" type="number" min="0" inputmode="numeric" value="${EDIT.def.office}"></div></div></div>
+  <div class="card" style="margin-top:12px"><b>${t('dlWilayas')}</b><p class="muted">${t('dlNote')}</p>
+   ${keys.length?`<div class="dr muted"><span></span><span>${t('dHome')}</span><span>${t('dOffice')}</span><span></span></div>`:''}
+   ${keys.map(n=>`<div class="dr" data-w="${n}"><b>${n} - ${esc(wname(n))}</b><input class="dh" type="number" min="0" inputmode="numeric" value="${EDIT.ws[n].home??''}"><input class="do" type="number" min="0" inputmode="numeric" value="${EDIT.ws[n].office??''}"><button class="btn sm red" type="button" onclick="dlRemove(${n})">×</button></div>`).join('')}
+   <div class="row" style="margin-top:10px"><select id="dl_add" style="flex:1" onchange="dlAdd(this.value)"><option value="">+ ${t('dlAdd')}</option>${free.map(n=>`<option value="${n}">${n} - ${esc(wname(n))}</option>`).join('')}</select><button class="btn sm" type="button" onclick="dlAll()">${t('dlAll')}</button></div></div>
+  <p style="margin-top:16px"><button class="btn pri" id="dl_save" onclick="saveDelivery()">${t('save')}</button></p>`}
+function dlAdd(n){if(!n)return;collectDelivery();EDIT.ws[n]={home:EDIT.def.home,office:EDIT.def.office};drawDelivery()}
+function dlAll(){collectDelivery();for(let i=1;i<=58;i++)if(!EDIT.ws[i])EDIT.ws[i]={home:EDIT.def.home,office:EDIT.def.office};drawDelivery()}
+function dlRemove(n){collectDelivery();delete EDIT.ws[n];drawDelivery()}
+async function saveDelivery(){
+  collectDelivery();
+  const ws={};Object.keys(EDIT.ws).forEach(k=>{const h=num(EDIT.ws[k].home),o=num(EDIT.ws[k].office);if(h!=null||o!=null)ws[k]={home:h,office:o}});
+  const value={default:{home:num(EDIT.def.home),office:num(EDIT.def.office)},wilayas:ws};
+  const btn=$('#dl_save');btn.disabled=true;
+  const r=await sb.from('store_settings').upsert({key:'shipping',value},{onConflict:'key'});
+  btn.disabled=false;if(r.error)return fail(r.error);toast(t('saved'));drawDelivery()}
 
 
 boot();

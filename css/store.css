@@ -301,3 +301,32 @@ header.hide{transform:translateY(-100%)}
 .fcols .phone-b{display:inline-flex;opacity:1;padding:10px 20px}
 #contact .soc{justify-content:flex-start}
 .soc-b svg,.phone-b svg{flex:none;display:block}
+
+/* ---- dashboard banners ---- */
+.bn{position:relative}
+.bn-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:28px;scrollbar-width:none}
+.bn-track::-webkit-scrollbar{display:none}
+.bn-s{position:relative;flex:0 0 100%;scroll-snap-align:center;aspect-ratio:4/3;max-height:560px;background-size:cover;background-position:center;background-color:var(--beige);display:flex;align-items:flex-end;color:#fff}
+.bn-s::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.66),rgba(0,0,0,.05) 70%)}
+.bn-t{position:relative;padding:24px;max-width:560px;display:grid;gap:10px;justify-items:start}
+.bn-t h2{margin:0;font-size:clamp(24px,5vw,38px);line-height:1.2;color:#fff}
+.bn-t p{margin:0;opacity:.92}
+.bn-t .btn.pri{background:#fff;color:var(--ink);border-color:#fff}
+.bn-dots{display:flex;justify-content:center;gap:8px;margin-top:12px}
+.bn-dots i{position:relative;width:8px;height:8px;border-radius:999px;background:var(--sand);cursor:pointer;transition:width .35s cubic-bezier(.2,.7,.2,1),background .3s}
+.bn-dots i::after{content:"";position:absolute;inset:-9px -4px}
+.bn-dots i.on{width:24px;background:var(--ink)}
+@media (min-width:760px){.bn-s{aspect-ratio:21/9}.bn-t{padding:44px}}
+
+/* ---- home sections scroll horizontally; results (search, category, "all") stay vertical ---- */
+.hrow{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.hrow::-webkit-scrollbar{display:none}
+.hrow>.card{flex:0 0 44%;scroll-snap-align:start;min-width:0}
+.hrow>.empty{flex:1 0 100%}
+@media (min-width:760px){.hrow>.card{flex:0 0 240px}}
+.hh{display:flex;align-items:center;gap:14px}
+.harrs{display:none;gap:8px}
+@media (min-width:760px){.harrs{display:flex}}
+.harrs button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--white);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background .25s,color .25s,transform .2s}
+.harrs button:hover{background:var(--ink);color:var(--ivory)}.harrs button:active{transform:scale(.92)}
+[dir=rtl] .harrs svg{transform:scaleX(-1)}

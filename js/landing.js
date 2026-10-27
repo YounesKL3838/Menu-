@@ -4,13 +4,13 @@ ar:{cur:"د.ج",lang:"Français",color:"اللون",size:"المقاس",qty:"ا�
 fName:"الاسم الكامل",fPhone:"الهاتف",fWil:"الولاية",fAddr:"العنوان",fCode:"كود الخصم (اختياري)",place:"تأكيد الطلب",
 sub3:"المجموع الفرعي",ship:"التوصيل (تقديري)",total:"الإجمالي التقديري",finalNote:"السعر النهائي يُحسب عند تأكيد الطلب. الدفع عند الاستلام.",
 thanks:"شكرًا لك!",orderNo:"رقم طلبك:",orderTot:"الإجمالي:",willCall:"سنتصل بك لتأكيد الطلب.",
-eStock:"إحدى القطع لم تعد متوفرة بالكمية المطلوبة.",eCode:"كود الخصم غير صالح.",eCust:"تحقق من الاسم والهاتف والولاية والعنوان.",eChoose:"اختر اللون والمقاس لكل قطعة.",eGen:"تعذّر إرسال الطلب، حاول مرة أخرى.",
+eStock:"إحدى القطع لم تعد متوفرة بالكمية المطلوبة.",eCode:"كود الخصم غير صالح.",eCust:"تحقق من الاسم والهاتف والولاية والعنوان.",dHome:"توصيل إلى المنزل",dOffice:"توصيل إلى المكتب",dNA:"غير متاح",eDeliv:"التوصيل غير متاح لهذه الولاية أو بهذا النوع.",fOffice:"المكتب أو البلدية",eChoose:"اختر اللون والمقاس لكل قطعة.",eGen:"تعذّر إرسال الطلب، حاول مرة أخرى.",
 nf:"هذه الصفحة غير متاحة.",noConf:"لم يتم ربط Supabase بعد: عدّل الملف js/config.js.",home:"العودة إلى المتجر",inLook:"القطع في هذه الإطلالة",lookTotal:"المجموع"},
 fr:{cur:"DA",lang:"العربية",color:"Couleur",size:"Taille",qty:"Quantité",inStock:"En stock :",pick:"Choisissez la couleur et la taille",order:"Commander",orderT:"Finalisez votre commande",
 fName:"Nom complet",fPhone:"Téléphone",fWil:"Wilaya",fAddr:"Adresse",fCode:"Code promo (facultatif)",place:"Valider la commande",
 sub3:"Sous-total",ship:"Livraison (estimée)",total:"Total estimé",finalNote:"Le prix final est calculé à la validation. Paiement à la livraison.",
 thanks:"Merci !",orderNo:"Votre numéro de commande :",orderTot:"Total :",willCall:"Nous vous appellerons pour confirmer la commande.",
-eStock:"Un article n’est plus disponible en quantité suffisante.",eCode:"Code promo invalide.",eCust:"Vérifiez le nom, le téléphone, la wilaya et l’adresse.",eChoose:"Choisissez la couleur et la taille de chaque pièce.",eGen:"Impossible d’envoyer la commande, réessayez.",
+eStock:"Un article n’est plus disponible en quantité suffisante.",eCode:"Code promo invalide.",eCust:"Vérifiez le nom, le téléphone, la wilaya et l’adresse.",dHome:"Livraison à domicile",dOffice:"Livraison au bureau",dNA:"Indisponible",eDeliv:"Livraison indisponible pour cette wilaya ou ce mode.",fOffice:"Bureau ou commune",eChoose:"Choisissez la couleur et la taille de chaque pièce.",eGen:"Impossible d’envoyer la commande, réessayez.",
 nf:"Cette page n’est pas disponible.",noConf:"Supabase n’est pas encore connecté : modifiez le fichier js/config.js.",home:"Retour à la boutique",inLook:"Les pièces de ce look",lookTotal:"Total"}
 };
 var WA="الشلف|الأغواط|أم البواقي|باتنة|بجاية|بسكرة|بشار|البليدة|البويرة|تمنراست|تبسة|تلمسان|تيارت|تيزي وزو|الجزائر|الجلفة|جيجل|سطيف|سعيدة|سكيكدة|سيدي بلعباس|عنابة|قالمة|قسنطينة|المدية|مستغانم|المسيلة|معسكر|ورقلة|وهران|البيض|إليزي|برج بوعريريج|بومرداس|الطارف|تندوف|تيسمسيلت|الوادي|خنشلة|سوق أهراس|تيبازة|ميلة|عين الدفلى|النعامة|عين تموشنت|غرداية|غليزان|تيميمون|برج باجي مختار|أولاد جلال|بني عباس|عين صالح|عين قزام|تقرت|جانت|المغير|المنيعة".split("|");WA.unshift("أدرار");
@@ -20,7 +20,7 @@ var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){r
 function load(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}}
 var sb=null;
 if(typeof supabase!=="undefined"&&typeof SUPABASE_URL!=="undefined"&&SUPABASE_URL&&SUPABASE_ANON_KEY){sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)}
-var lang=load("lang","ar"),LP=null,LOOK=null,SELS=[],FEES={"default":0},state="loading",GT=null,GP=null;
+var lang=load("lang","ar"),LP=null,LOOK=null,SELS=[],FEES={"default":0},SHIP=null,DT="home",state="loading",GT=null,GP=null;
 var slug=new URLSearchParams(location.search).get("s")||"";
 function t(k){return T[lang][k]}
 function url(p){return sb.storage.from("product-images").getPublicUrl(p).data.publicUrl}
@@ -32,6 +32,11 @@ function fmt(v){return Number(v||0).toLocaleString(lang==="ar"?"ar-DZ":"fr-FR")+
 function pimgs(p){return(p.product_images||[]).slice().sort(function(a,b){return(b.is_primary-a.is_primary)||(a.sort_order-b.sort_order)}).map(function(i){return i.path})}
 function toast(m){var e=$("#toast");e.textContent=m;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("on")},2400)}
 function fee(w){var f=FEES[w];if(f==null)f=FEES["default"];return Number(f)||0}
+function wList(){var ws=SHIP&&SHIP.wilayas?Object.keys(SHIP.wilayas):[];if(ws.length)return ws.map(Number).filter(function(n){return n>=1&&n<=58}).sort(function(a,b){return a-b});var a=[];for(var i=1;i<=58;i++)a.push(i);return a}
+function dprice(w,type){
+  if(SHIP){var ws=SHIP.wilayas||{},o=Object.keys(ws).length?ws[w]:SHIP["default"],v=o?o[type]:null;return(v===null||v===undefined||v==="")?null:Number(v)}
+  return fee(w)
+}
 var PSEL="id,sku,price,sale_price,product_translations(lang,name,short_description,description),product_images(path,is_primary,sort_order),product_variants(id,size,color,stock)";
 
 async function loadAll(){
@@ -40,7 +45,7 @@ async function loadAll(){
     var lr=await sb.from("landing_pages").select("*").eq("slug",slug).eq("status","published").maybeSingle();
     if(lr.error||!lr.data){state="nf";return}
     LP=lr.data;
-    var fr=await sb.from("store_settings").select("value").eq("key","shipping_fees").maybeSingle();if(fr.data)FEES=fr.data.value;
+    var fr=await sb.from("store_settings").select("key,value").in("key",["shipping_fees","shipping"]);(fr.data||[]).forEach(function(r){if(r.key==="shipping_fees")FEES=r.value;if(r.key==="shipping")SHIP=r.value});
     var ps=[];
     if(LP.target_type==="product"){
       var r=await sb.from("products").select(PSEL).eq("id",LP.product_id).maybeSingle();if(r.error||!r.data){state="nf";return}ps=[r.data]
@@ -88,8 +93,17 @@ function itemsHtml(){
   }).join("")
 }
 function totals(){
-  var sub=SELS.reduce(function(a,s){return a+cur(s.p)*s.qty},0),w=$("#o_w")?$("#o_w").value:"",f=w?fee(w):0;
-  var el=$("#tot");if(el)el.innerHTML='<div class="tot"><span>'+t("sub3")+"</span><span>"+fmt(sub)+'</span></div><div class="tot"><span>'+t("ship")+"</span><span>"+(w?fmt(f):"—")+'</span></div><div class="tot"><b>'+t("total")+"</b><b>"+fmt(sub+f)+"</b></div>"
+  var sub=SELS.reduce(function(a,s){return a+cur(s.p)*s.qty},0),w=$("#o_w")?$("#o_w").value:"",box=$("#o_d");
+  if(box){
+    if(!w){box.innerHTML=""}else{
+      var h=dprice(w,"home"),o=dprice(w,"office");
+      if(DT==="home"&&h==null&&o!=null)DT="office";if(DT==="office"&&o==null&&h!=null)DT="home";
+      box.innerHTML=[["home",h],["office",o]].map(function(x){return'<button type="button" class="chip'+(DT===x[0]?" on":"")+'" data-dt="'+x[0]+'"'+(x[1]==null?" disabled":"")+">"+(x[0]==="home"?t("dHome"):t("dOffice"))+(x[1]==null?" ("+t("dNA")+")":" · "+fmt(x[1]))+"</button>"}).join("")
+    }
+  }
+  var f=w?dprice(w,DT):null,el=$("#tot");
+  if(el)el.innerHTML='<div class="tot"><span>'+t("sub3")+"</span><span>"+fmt(sub)+'</span></div><div class="tot"><span>'+t("ship")+"</span><span>"+(w?(f==null?t("dNA"):fmt(f)):"—")+'</span></div><div class="tot"><b>'+t("total")+"</b><b>"+(f==null?"—":fmt(sub+f))+"</b></div>";
+  var al=$("#o_al");if(al)al.textContent=DT==="office"?t("fOffice"):t("fAddr")
 }
 function render(){
   var h=document.documentElement;h.lang=lang;h.dir=lang==="ar"?"rtl":"ltr";$("#lang").textContent=t("lang");
@@ -105,7 +119,7 @@ function render(){
   box.innerHTML='<section class="lp-hero"><div>'+galleryHtml(paths)+'</div><div><h1>'+esc(title)+"</h1>"+(c.sub?'<p class="sub">'+esc(c.sub)+"</p>":"")+'<div class="lp-price">'+priceHtml+"</div>"+
    (ben.length?'<ul class="lp-ben">'+ben.map(function(b){return"<li>"+esc(b)+"</li>"}).join("")+"</ul>":"")+
    (form?'<div class="lp-order" id="order"><h2>'+t("orderT")+'</h2><div id="items">'+itemsHtml()+'</div><form id="co" novalidate><label class="fld">'+t("fName")+'</label><input id="o_n" autocomplete="name"><label class="fld">'+t("fPhone")+'</label><input id="o_p" type="tel" dir="ltr" autocomplete="tel">'+
-    '<label class="fld">'+t("fWil")+'</label><select id="o_w"><option value="">—</option>'+wl.map(function(n,k){return'<option value="'+(k+1)+'">'+(k+1)+" - "+n+"</option>"}).join("")+'</select><label class="fld">'+t("fAddr")+'</label><input id="o_a" autocomplete="street-address"><label class="fld">'+t("fCode")+'</label><input id="o_c" dir="ltr">'+
+    '<label class="fld">'+t("fWil")+'</label><select id="o_w"><option value="">—</option>'+wList().map(function(n){return'<option value="'+n+'">'+n+" - "+wl[n-1]+"</option>"}).join("")+'</select><div id="o_d" class="chips" style="margin-top:8px"></div><label class="fld" id="o_al">'+t("fAddr")+'</label><input id="o_a" autocomplete="street-address"><label class="fld">'+t("fCode")+'</label><input id="o_c" dir="ltr">'+
     '<div id="tot" style="margin-top:14px"></div><p class="note">'+t("finalNote")+'</p><p class="err" id="o_e"></p><button class="btn pri" id="o_b" style="width:100%">'+t("place")+"</button></form></div>":"")+
    "</div></section>"+(!isP?"":(desc?'<p class="lp-desc">'+esc(desc)+"</p>":""));
   if(!isP&&desc)box.insertAdjacentHTML("beforeend",'<p class="lp-desc">'+esc(desc)+"</p>");
@@ -114,19 +128,21 @@ function render(){
 }
 async function placeOrder(e){
   e.preventDefault();var err=$("#o_e"),b=$("#o_b");err.textContent="";
-  var cust={name:$("#o_n").value.trim(),phone:$("#o_p").value.trim(),wilaya:$("#o_w").value,address:$("#o_a").value.trim(),note:"landing:"+slug};
+  var cust={name:$("#o_n").value.trim(),phone:$("#o_p").value.trim(),wilaya:$("#o_w").value,address:$("#o_a").value.trim(),note:"landing:"+slug,delivery_type:DT};
   if(cust.name.length<2||cust.phone.length<8||cust.address.length<4||!cust.wilaya){err.textContent=t("eCust");return}
+  if(dprice(cust.wilaya,DT)==null){err.textContent=t("eDeliv");return}
   var items=[];
   for(var i=0;i<SELS.length;i++){var s=SELS[i],v=(s.p.product_variants||[]).filter(function(x){return x.color===s.color&&x.size===s.size})[0];if(!v){err.textContent=t("eChoose");return}items.push({variant_id:v.id,qty:s.qty})}
   b.disabled=true;
   var r=await sb.rpc("create_order",{p_items:items,p_customer:cust,p_code:$("#o_c").value.trim()||null});
-  if(r.error){var m=r.error.message||"";err.textContent=m.indexOf("out_of_stock")>=0||m.indexOf("product_unavailable")>=0||m.indexOf("variant_not_found")>=0?t("eStock"):m.indexOf("invalid_discount")>=0?t("eCode"):m.indexOf("invalid_customer")>=0?t("eCust"):t("eGen");b.disabled=false;return}
+  if(r.error){var m=r.error.message||"";err.textContent=m.indexOf("out_of_stock")>=0||m.indexOf("product_unavailable")>=0||m.indexOf("variant_not_found")>=0?t("eStock"):m.indexOf("delivery_unavailable")>=0?t("eDeliv"):m.indexOf("invalid_discount")>=0?t("eCode"):m.indexOf("invalid_customer")>=0?t("eCust"):t("eGen");b.disabled=false;return}
   var o=r.data;$("#cta").hidden=true;
   $("#order").innerHTML='<div class="ok"><h3>'+t("thanks")+"</h3><p>"+t("orderNo")+' <b dir="ltr">'+esc(o.order_number)+"</b></p><p>"+t("orderTot")+" <b>"+fmt(o.total)+'</b></p><p class="note">'+t("willCall")+'</p><a class="btn sec" href="index.html">'+t("home")+"</a></div>";
   $("#order").scrollIntoView({behavior:"smooth",block:"center"})
 }
 document.addEventListener("click",function(e){
   var el=e.target,ch=el.closest("[data-i]");
+  var dtb=el.closest("[data-dt]");if(dtb){DT=dtb.dataset.dt;totals();return}
   if(ch&&ch.closest("#items")){var s=SELS[Number(ch.dataset.i)];
     if(ch.dataset.col!=null){s.color=ch.dataset.col;s.size=null;s.qty=1}
     else if(ch.dataset.siz!=null){s.size=ch.dataset.siz}

@@ -57,3 +57,8 @@ main{animation:fadeIn .4s ease both}
 .vg{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:10px}
 .vg .vcs{margin:8px 0 6px}
 .vr{grid-template-columns:1fr 90px 40px}
+
+/* ---- delivery rows ---- */
+.dr{display:grid;grid-template-columns:1.5fr 1fr 1fr 40px;gap:6px;align-items:center;margin-bottom:6px}
+.dr input{min-height:40px;padding:6px 10px}
+@media (max-width:520px){.dr{grid-template-columns:1fr 1fr 1fr 36px;font-size:13px}.dr b{grid-column:1/-1}}
